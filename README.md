@@ -24,6 +24,7 @@ The library implements the following subset of Cisco UCS Manager XML API:
 -   ConfigConfMos
 -   ConfigEstimateImpact
 -   LsInstantiateNTemplate
+-   LsInstantiateNNamedTemplate
 
 See Cisco UCS Manager XML API Programmer's Guide at https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/sw/api/b_ucs_api_book/b_ucs_api_book_chapter_00.html
 

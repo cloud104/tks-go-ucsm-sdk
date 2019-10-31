@@ -10,7 +10,7 @@ func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	spDn := "org-root/org-Linux/ls-phygymdev01-lab1"
+	spDn := "org-root/org-Linux/ls-phygymdev01-lab"
 	pnDn := "sys/chassis-2/blade-5"
 	client, err := util.AaaLogin(endPoint, username, password)
 	//client.SetDebug(true)

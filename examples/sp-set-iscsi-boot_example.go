@@ -11,7 +11,7 @@ func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	spDn := "org-root/org-Linux/ls-phygymdev01-lab1"
+	spDn := "org-root/org-Linux/ls-phygymdev01-lab"
 	iscsiVnicName := "iscsi0"
 	iscsiInitiatorName := "iqn.2005-02.com.open-iscsi:phygymdev01-lab.1"
 	iscsiVnicAddr := mo.VnicIPv4IscsiAddr {

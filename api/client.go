@@ -308,3 +308,12 @@ func (c *Client) LsInstantiateNTemplate(in LsInstantiateNTemplateRequest, out mo
 	}
 	return
 }
+
+// LsInstantiateNNamedTemplate instantiates named service profile from service profile template
+func (c *Client) LsInstantiateNNamedTemplate(in LsInstantiateNNamedTemplateRequest, out mo.Any) (err error) {
+	var resp LsInstantiateNNamedTemplateResponse
+	if err = c.doPost(in, &resp); err == nil {
+		err = c.getInnerXML(resp.OutConfigs, out)
+	}
+	return
+}

@@ -12,14 +12,14 @@ func main() {
 	password := "secret"
 	sptDn := "org-root/org-Linux/ls-Linux-B200M3-SPT"
 	spOrg := "org-root/org-Linux"
-	spNamePrefix := "phygymdev01-lab"
+	spName := "phygymdev01-lab"
 	client, err := util.AaaLogin(endPoint, username, password)
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
 	defer client.AaaLogout()
-	if lsServer, err := util.SptInstantiate(client, sptDn, spOrg, spNamePrefix); err != nil {
+	if lsServer, err := util.SptInstantiate(client, sptDn, spOrg, spName); err != nil {
 		fmt.Printf("Error: %s\n", err)
 	} else {
 		fmt.Printf("Dn: %s\n", lsServer.Dn)

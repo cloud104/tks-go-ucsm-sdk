@@ -10,7 +10,7 @@ func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	//srvDnFilter := "org-root/org-Linux/ls-phygymdev01-lab1"
+	//srvDnFilter := "org-root/org-Linux/ls-phygymdev01-lab"
 	//srvType := "instance"
 	srvDnFilter := "org-root/org-Linux/ls-Linux-B200M3-SPT"
 	srvType := "initial-template"

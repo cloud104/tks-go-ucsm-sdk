@@ -181,6 +181,7 @@ type Id struct {
 	Value   string   `xml:"value,attr"`
 }
 
+/*
 // NewId creates a new class id.
 func NewId(value string) Id {
 	id := Id{
@@ -188,6 +189,7 @@ func NewId(value string) Id {
 	}
 	return id
 }
+*/
 
 // ConfigResolveClassesRequest type is used for constructing requests that retrieve managed
 // objects in several classes.
@@ -292,7 +294,7 @@ type ConfigEstimateImpactResponse struct {
 	OutAffected InnerXml `xml:"outAffected"`
 }
 
-// LsInstantiateNTemplate type is used to instantiate service profile from service profile template
+// LsInstantiateNTemplateRequest type is used to instantiate service profile from service profile template
 type LsInstantiateNTemplateRequest struct {
 	XMLName                   xml.Name `xml:"lsInstantiateNTemplate"`
 	Cookie                    string   `xml:"cookie,attr"`
@@ -307,6 +309,23 @@ type LsInstantiateNTemplateRequest struct {
 type LsInstantiateNTemplateResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"lsInstantiateNTemplate"`
+	OutConfigs InnerXml `xml:"outConfigs"`
+}
+
+// LsInstantiateNNamedTemplateRequest type is used to instantiate service profile from service profile template
+type LsInstantiateNNamedTemplateRequest struct {
+	XMLName                   xml.Name `xml:"lsInstantiateNNamedTemplate"`
+	Cookie                    string   `xml:"cookie,attr"`
+	Dn                        string   `xml:"dn,attr"`
+	InTargetOrg               string   `xml:"inTargetOrg,attr"`
+        InNameSet                 []Dn     `xml:"inNameSet>dn"`
+        InHierarchical            string   `xml:"inHierarchical,attr"`
+}
+
+// LsInstantiateNNamedTemplateResponse is the response type associated with LsInstantiateNNamedTemplateRequest
+type LsInstantiateNNamedTemplateResponse struct {
+	BaseResponse
+	XMLName    xml.Name `xml:"lsInstantiateNNamedTemplate"`
 	OutConfigs InnerXml `xml:"outConfigs"`
 }
 
