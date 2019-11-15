@@ -10,7 +10,13 @@ func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	bladeModel := "UCSB-B200-M4"
+	bladeSpec := util.BladeSpec {
+			//Dn: "sys/chassis-1/blade-2",
+			Model: "UCSB-B200-M4",
+			//NumOfCpus: 2,
+			//NumOfCores: 36,
+			//TotalMemory: 65536,
+	}
 	client, err := util.AaaLogin(endPoint, username, password)
 	//client.SetDebug(true)
 	if err != nil {
@@ -18,7 +24,7 @@ func main() {
 		return
 	}
 	defer client.AaaLogout()
-	if computeBlades, err := util.ComputeBladeGetAvailable(client, bladeModel); err != nil {
+	if computeBlades, err := util.ComputeBladeGetAvailable(client, &bladeSpec); err != nil {
 		fmt.Print(err)
 	} else {
 		for _, blade := range *computeBlades {
