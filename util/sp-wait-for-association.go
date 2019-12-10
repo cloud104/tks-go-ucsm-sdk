@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"time"
 
 	"go-ucsm-sdk/api"
@@ -12,6 +13,10 @@ func SpWaitForAssociation(c *api.Client, spDn string, waitMax int) (assocState s
 	var lsServers []*mo.LsServer
 	for time.Now().Before(waitUntil) {
 		if lsServers, err = ServerGet(c, spDn, "instance"); err == nil {
+			if len(lsServers) == 0 {
+				err = fmt.Errorf("ServerGet: no server %s found", spDn)
+				return
+			}
 			assocState = lsServers[0].AssocState
 			if assocState == "associating" {
 				time.Sleep(2 * time.Second)
