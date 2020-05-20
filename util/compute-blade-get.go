@@ -1,18 +1,22 @@
 package util
 
 import (
-	"strconv"
+	"regexp"
 
 	"go-ucsm-sdk/api"
 	"go-ucsm-sdk/mo"
 )
 
+const (
+	wcardChars = `[\^\*\+\.\(\)\[\]\|\?\$]`
+)
+
 type BladeSpec struct {
-	Dn          string `yaml:"dn,omitempty"`
-	Model       string `yaml:"model,omitempty"`
-	NumOfCpus   int    `yaml:"numOfCpus,omitempty"`
-	NumOfCores  int    `yaml:"numOfCores,omitempty"`
-	TotalMemory int    `yaml:"totalMemory,omitempty"`
+	Dn          string `yaml:"dn,omitempty" json:"dn,omitempty" xml:"dn,omitempty"`
+	Model       string `yaml:"model,omitempty" json:"model,omitempty" xml:"model,omitempty"`
+	NumOfCpus   string `yaml:"numOfCpus,omitempty" json:"numOfCpus,omitempty" xml:"numOfCpus,omitempty"`
+	NumOfCores  string `yaml:"numOfCores,omitempty" json:"numOfCores,omitempty" xml:"numOfCores,omitempty"`
+	TotalMemory string `yaml:"totalMemory,omitempty" json:"totalMemory,omitempty" xml:"totalMemory,omitempty"`
 }
 
 func ComputeBladeGetAvailable(c *api.Client, bladeSpec *BladeSpec) (computeBlades *[]mo.ComputeBlade, err error) {
@@ -50,55 +54,132 @@ func ComputeBladeGetAvailable(c *api.Client, bladeSpec *BladeSpec) (computeBlade
 		},
 	}
 	if bladeSpec != nil {
+		var matched bool
 		if bladeSpec.Dn != "" {
-			dnFilter := api.FilterEq {
-				FilterProperty: api.FilterProperty {
-					Class: "computeBlade",
-					Property: "dn",
-					Value: bladeSpec.Dn,
-				},
+			if matched, err = regexp.MatchString(wcardChars, bladeSpec.Dn); err != nil {
+				return
 			}
-			filter.Filters = append(filter.Filters, dnFilter)
+			if matched {
+				filter.Filters = append(filter.Filters, api.FilterWildcard {
+									    FilterProperty: api.FilterProperty {
+										    Class: "computeBlade",
+										    Property: "dn",
+										    Value: bladeSpec.Dn,
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+									    FilterProperty: api.FilterProperty {
+										    Class: "computeBlade",
+										    Property: "dn",
+										    Value: bladeSpec.Dn,
+									    },
+									})
+			}
 		}
 		if bladeSpec.Model != "" {
-			modelFilter := api.FilterEq {
-				FilterProperty: api.FilterProperty {
-					Class: "computeBlade",
-					Property: "model",
-					Value: bladeSpec.Model,
-				},
+			if matched, err = regexp.MatchString(wcardChars, bladeSpec.Model); err != nil {
+				return
 			}
-			filter.Filters = append(filter.Filters, modelFilter)
+			if matched {
+				filter.Filters = append(filter.Filters, api.FilterWildcard {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "model",
+											Value: bladeSpec.Model,
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "model",
+											Value: bladeSpec.Model,
+										},
+									})
+			}
 		}
-		if bladeSpec.NumOfCpus > 0 {
-			numOfCpusFilter := api.FilterEq {
-				FilterProperty: api.FilterProperty {
-					Class: "computeBlade",
-					Property: "numOfCpus",
-					Value: strconv.Itoa(bladeSpec.NumOfCpus),
-				},
+		rangeRegexp, _ := regexp.Compile(`([0-9]+)\s*-\s*([0-9]+)`)
+		if bladeSpec.NumOfCpus != "" {
+			cpusRange := rangeRegexp.FindStringSubmatch(bladeSpec.NumOfCpus)
+			if len(cpusRange) == 3 {
+				filter.Filters = append(filter.Filters, api.FilterGe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCpus",
+											Value: cpusRange[1],
+										},
+									})
+				filter.Filters = append(filter.Filters, api.FilterLe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCpus",
+											Value: cpusRange[2],
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCpus",
+											Value: bladeSpec.NumOfCpus,
+										},
+									})
 			}
-			filter.Filters = append(filter.Filters, numOfCpusFilter)
 		}
-		if bladeSpec.NumOfCores > 0 {
-			numOfCoresFilter := api.FilterEq {
-				FilterProperty: api.FilterProperty {
-					Class: "computeBlade",
-					Property: "numOfCores",
-					Value: strconv.Itoa(bladeSpec.NumOfCores),
-				},
+		if bladeSpec.NumOfCores != "" {
+			coresRange := rangeRegexp.FindStringSubmatch(bladeSpec.NumOfCores)
+			if len(coresRange) == 3 {
+				filter.Filters = append(filter.Filters, api.FilterGe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCores",
+											Value: coresRange[1],
+										},
+									})
+				filter.Filters = append(filter.Filters, api.FilterLe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCores",
+											Value: coresRange[2],
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfCores",
+											Value: bladeSpec.NumOfCores,
+										},
+									})
 			}
-			filter.Filters = append(filter.Filters, numOfCoresFilter)
 		}
-		if bladeSpec.TotalMemory > 0 {
-			totalMemoryFilter := api.FilterEq {
-				FilterProperty: api.FilterProperty {
-					Class: "computeBlade",
-					Property: "totalMemory",
-					Value: strconv.Itoa(bladeSpec.TotalMemory),
-				},
+		if bladeSpec.TotalMemory != "" {
+			memRange := rangeRegexp.FindStringSubmatch(bladeSpec.TotalMemory)
+			if len(memRange) == 3 {
+				filter.Filters = append(filter.Filters, api.FilterGe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "totalMemory",
+											Value: memRange[1],
+										},
+									})
+				filter.Filters = append(filter.Filters, api.FilterLe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "totalMemory",
+											Value: memRange[2],
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "totalMemory",
+											Value: bladeSpec.TotalMemory,
+										},
+									})
 			}
-			filter.Filters = append(filter.Filters, totalMemoryFilter)
 		}
 	}
 	req := api.ConfigResolveClassRequest {

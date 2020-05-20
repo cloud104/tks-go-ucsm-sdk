@@ -46,7 +46,7 @@ func xmlMarshalWithSelfClosingTags(in interface{}) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	re := regexp.MustCompile(`<([^/][\w\s\"\=\-\/]*)>\s*<(\/\w*)>`)
+	re := regexp.MustCompile(`<([^/][\w\s\"\=\-\/\^\*\+\.\(\)\[\]\|\?\$]*)>\s*<(\/\w*)>`)
 	newData := re.ReplaceAllString(string(data), "<$1/>")
 	return []byte(newData), nil
 }
