@@ -3,8 +3,8 @@ package util
 import (
 	"encoding/xml"
 
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 // Re-defining mo.LsServer to allow empty SrcTemplName value

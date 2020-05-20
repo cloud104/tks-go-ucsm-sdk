@@ -4,7 +4,7 @@ import (
         "crypto/tls"
         "net/http"
 
-	"go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
 )
 
 func AaaLogin(endPoint string, username string, password string) (client *api.Client, err error) {

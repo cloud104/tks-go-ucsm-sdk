@@ -3,8 +3,8 @@ package util
 import (
 	"fmt"
 
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SpGetAssociationState(c *api.Client, spDn string) (assocState string, err error) {

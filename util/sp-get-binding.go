@@ -1,8 +1,8 @@
 package util
 
 import (
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SpGetBinding(c *api.Client, spDn string) (lsBinding *mo.LsBinding, err error) {

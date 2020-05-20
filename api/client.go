@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"golang.org/x/time/rate"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 // RateLimit limits the number of requests per second that a Client

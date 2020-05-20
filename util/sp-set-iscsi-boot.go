@@ -1,8 +1,8 @@
 package util
 
 import (
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SpSetIscsiBoot(c *api.Client, spDn string, iscsiVnicName string, iscsiInitiatorName string, iscsiVnicAddr mo.VnicIPv4IscsiAddr, iscsiTargets []mo.VnicIScsiStaticTargetIf) (vnicIscsi *mo.VnicIScsi, err error) {

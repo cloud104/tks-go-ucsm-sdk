@@ -3,8 +3,8 @@ package util
 import (
 	"strings"
 
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.LsServer, err error) {

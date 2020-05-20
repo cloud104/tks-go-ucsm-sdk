@@ -1,8 +1,8 @@
 package util
 
 import (
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SptInstantiate(c *api.Client, sptDn string, spOrg string, spName string) (lsServer *mo.LsServer, err error) {

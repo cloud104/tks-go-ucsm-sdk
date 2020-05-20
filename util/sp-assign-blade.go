@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strings"
 	
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SpAssignBlade(c *api.Client, spDn string, pnDn string) (lsBinding *mo.LsBinding, err error) {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"go-ucsm-sdk/api"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 func SpWaitForAssociation(c *api.Client, spDn string, waitMax int) (assocState string, err error) {

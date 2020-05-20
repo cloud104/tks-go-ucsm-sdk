@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"go-ucsm-sdk/version"
-	"go-ucsm-sdk/mo"
+	"github.com/igor-feoktistov/go-ucsm-sdk/version"
+	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 // The remote API endpoint to which we POST requests.
