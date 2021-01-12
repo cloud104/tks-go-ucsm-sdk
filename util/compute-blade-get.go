@@ -12,10 +12,11 @@ const (
 )
 
 type BladeSpec struct {
-	Dn          string `yaml:"dn,omitempty" json:"dn,omitempty" xml:"dn,omitempty"`
-	Model       string `yaml:"model,omitempty" json:"model,omitempty" xml:"model,omitempty"`
-	NumOfCpus   string `yaml:"numOfCpus,omitempty" json:"numOfCpus,omitempty" xml:"numOfCpus,omitempty"`
-	NumOfCores  string `yaml:"numOfCores,omitempty" json:"numOfCores,omitempty" xml:"numOfCores,omitempty"`
+	Dn           string `yaml:"dn,omitempty" json:"dn,omitempty" xml:"dn,omitempty"`
+	Model        string `yaml:"model,omitempty" json:"model,omitempty" xml:"model,omitempty"`
+	NumOfCpus    string `yaml:"numOfCpus,omitempty" json:"numOfCpus,omitempty" xml:"numOfCpus,omitempty"`
+	NumOfCores   string `yaml:"numOfCores,omitempty" json:"numOfCores,omitempty" xml:"numOfCores,omitempty"`
+	NumOfThreads string `yaml:"numOfThreads,omitempty" json:"numOfThreads,omitempty" xml:"numOfThreads,omitempty"`
 	TotalMemory string `yaml:"totalMemory,omitempty" json:"totalMemory,omitempty" xml:"totalMemory,omitempty"`
 }
 
@@ -150,6 +151,33 @@ func ComputeBladeGetAvailable(c *api.Client, bladeSpec *BladeSpec) (computeBlade
 											Class: "computeBlade",
 											Property: "numOfCores",
 											Value: bladeSpec.NumOfCores,
+										},
+									})
+			}
+		}
+		if bladeSpec.NumOfThreads != "" {
+			threadsRange := rangeRegexp.FindStringSubmatch(bladeSpec.NumOfThreads)
+			if len(threadsRange) == 3 {
+				filter.Filters = append(filter.Filters, api.FilterGe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfThreads",
+											Value: threadsRange[1],
+										},
+									})
+				filter.Filters = append(filter.Filters, api.FilterLe {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfThreads",
+											Value: threadsRange[2],
+										},
+									})
+			} else {
+				filter.Filters = append(filter.Filters, api.FilterEq {
+										FilterProperty: api.FilterProperty {
+											Class: "computeBlade",
+											Property: "numOfThreads",
+											Value: bladeSpec.NumOfThreads,
 										},
 									})
 			}
