@@ -14,10 +14,11 @@ const (
 type BladeSpec struct {
 	Dn           string `yaml:"dn,omitempty" json:"dn,omitempty" xml:"dn,omitempty"`
 	Model        string `yaml:"model,omitempty" json:"model,omitempty" xml:"model,omitempty"`
+	Serial       string `yaml:"serial,omitempty" json:"serial,omitempty" xml:"serial,omitempty"`
 	NumOfCpus    string `yaml:"numOfCpus,omitempty" json:"numOfCpus,omitempty" xml:"numOfCpus,omitempty"`
 	NumOfCores   string `yaml:"numOfCores,omitempty" json:"numOfCores,omitempty" xml:"numOfCores,omitempty"`
 	NumOfThreads string `yaml:"numOfThreads,omitempty" json:"numOfThreads,omitempty" xml:"numOfThreads,omitempty"`
-	TotalMemory string `yaml:"totalMemory,omitempty" json:"totalMemory,omitempty" xml:"totalMemory,omitempty"`
+	TotalMemory  string `yaml:"totalMemory,omitempty" json:"totalMemory,omitempty" xml:"totalMemory,omitempty"`
 }
 
 func ComputeBladeGetAvailable(c *api.Client, bladeSpec *BladeSpec) (computeBlades *[]mo.ComputeBlade, err error) {
