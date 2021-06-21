@@ -8,7 +8,7 @@ import (
 )
 
 type LsServerDescr struct {
-		Descr string `xml:"descr,attr,omitempty"`
+	Descr string `xml:"descr,attr,omitempty"`
 }
 
 type LsServerDescrMo struct {
