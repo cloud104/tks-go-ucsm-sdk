@@ -8,8 +8,8 @@ import (
 )
 
 type LsServerAttributes struct {
-	Descr string    `xml:"descr,attr,omitempty"`
-	UsrLbl string   `xml:"usrLbl,attr,omitempty"`
+	Descr string    `xml:"descr,attr"`
+	UsrLbl string   `xml:"usrLbl,attr"`
 }
 
 type LsServerAttrMo struct {
