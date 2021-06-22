@@ -8,7 +8,6 @@ import (
 )
 
 type LsServerAttributes struct {
-	AssetTag string `xml:"assetTag,attr,omitempty"`
 	Descr string    `xml:"descr,attr,omitempty"`
 	UsrLbl string   `xml:"usrLbl,attr,omitempty"`
 }
@@ -18,11 +17,10 @@ type LsServerAttrMo struct {
         LsServer LsServerAttributes `xml:"lsServer"`
 }
 
-func SpSetAttributes(c *api.Client, spDn string, spAssetTag string, spDescription string, spUserLabel string) (lsServer *mo.LsServer, err error) {
+func SpSetAttributes(c *api.Client, spDn string, spDescription string, spUserLabel string) (lsServer *mo.LsServer, err error) {
 	var out mo.LsServerMo
 	lsServerMo := LsServerAttrMo {
 			LsServer: LsServerAttributes {
-				    AssetTag: spAssetTag,
 				    Descr: spDescription,
 				    UsrLbl: spUserLabel,
 			},
