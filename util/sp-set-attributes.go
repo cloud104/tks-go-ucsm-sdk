@@ -13,15 +13,15 @@ type LsServerAttributes struct {
 	UsrLbl string   `xml:"usrLbl,attr,omitempty"`
 }
 
-type LsServerDescrMo struct {
+type LsServerAttrMo struct {
         XMLName xml.Name
         LsServer LsServerAttributes `xml:"lsServer"`
 }
 
 func SpSetAttributes(c *api.Client, spDn string, spAssetTag string, spDescription string, spUserLabel string) (lsServer *mo.LsServer, err error) {
 	var out mo.LsServerMo
-	lsServerMo := LsServerDescrMo {
-			LsServer: LsServerDescr {
+	lsServerMo := LsServerAttrMo {
+			LsServer: LsServerAttributes {
 				    AssetTag: spAssetTag,
 				    Descr: spDescription,
 				    UsrLbl: spUserLabel,
