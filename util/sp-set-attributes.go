@@ -18,7 +18,7 @@ type LsServerDescrMo struct {
         LsServer LsServerAttributes `xml:"lsServer"`
 }
 
-func SpSetAttributes(c *api.Client, spDn string, spAssetTag, spDescription string, spUserLabel) (lsServer *mo.LsServer, err error) {
+func SpSetAttributes(c *api.Client, spDn string, spAssetTag string, spDescription string, spUserLabel string) (lsServer *mo.LsServer, err error) {
 	var out mo.LsServerMo
 	lsServerMo := LsServerDescrMo {
 			LsServer: LsServerDescr {
