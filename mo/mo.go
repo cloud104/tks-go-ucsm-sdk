@@ -744,6 +744,7 @@ type NetworkElement struct {
 type LsServer struct {
 	XMLName                        xml.Name `xml:"lsServer"`
 	AgentPolicyName                string   `xml:"agentPolicyName,attr,omitempty"`
+	AssetTag                       string   `xml:"assetTag,attr,omitempty"`
 	AssignState                    string   `xml:"assignState,attr,omitempty"`
 	AssocState                     string   `xml:"assocState,attr,omitempty"`
 	BiosProfileName                string   `xml:"biosProfileName,attr,omitempty"`

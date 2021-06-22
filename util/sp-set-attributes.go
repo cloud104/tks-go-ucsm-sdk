@@ -7,20 +7,24 @@ import (
 	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
-type LsServerDescr struct {
-	Descr string `xml:"descr,attr,omitempty"`
+type LsServerAttributes struct {
+	AssetTag string `xml:"assetTag,attr,omitempty"`
+	Descr string    `xml:"descr,attr,omitempty"`
+	UsrLbl string   `xml:"usrLbl,attr,omitempty"`
 }
 
 type LsServerDescrMo struct {
         XMLName xml.Name
-        LsServer LsServerDescr `xml:"lsServer"`
+        LsServer LsServerAttributes `xml:"lsServer"`
 }
 
-func SpSetDescr(c *api.Client, spDn string, spDescr string) (lsServer *mo.LsServer, err error) {
+func SpSetAttributes(c *api.Client, spDn string, spAssetTag, spDescription string, spUserLabel) (lsServer *mo.LsServer, err error) {
 	var out mo.LsServerMo
 	lsServerMo := LsServerDescrMo {
 			LsServer: LsServerDescr {
-				    Descr: spDescr,
+				    AssetTag: spAssetTag,
+				    Descr: spDescription,
+				    UsrLbl: spUserLabel,
 			},
 	}
 	req := api.ConfigConfMoRequest {
