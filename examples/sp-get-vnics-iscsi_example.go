@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
@@ -37,10 +37,10 @@ func main() {
 					fmt.Println("\t\t\tLuns:")
 					fmt.Printf("\t\t\t\tId: %s\n", lun.Id)
 					fmt.Printf("\t\t\t\tBootable: %s\n", lun.Bootable)
-					
+
 				}
 			}
-			
+
 		}
 	}
 }

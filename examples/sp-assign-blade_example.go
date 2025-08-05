@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	spDn := "org-root/org-Linux/ls-phygymdev01-lab"
-	pnDn := "sys/chassis-2/blade-5"
+	spDn := "org-root"
+	pnDn := "org-TPSP1"
 	client, err := util.AaaLogin(endPoint, username, password)
 	//client.SetDebug(true)
 	if err != nil {

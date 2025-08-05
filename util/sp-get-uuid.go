@@ -1,13 +1,13 @@
 package util
 
 import (
-	"fmt"
 	"bytes"
-	"strings"
 	"encoding/binary"
+	"fmt"
+	"strings"
 
-	"github.com/igor-feoktistov/go-ucsm-sdk/api"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/api"
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 )
 
 const uuidSize = 16

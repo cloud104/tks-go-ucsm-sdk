@@ -1,27 +1,27 @@
 package util
 
 import (
-	"github.com/igor-feoktistov/go-ucsm-sdk/api"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/api"
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 )
 
-func SpDelete(c *api.Client, spDn string) (error) {
+func SpDelete(c *api.Client, spDn string) error {
 	var out mo.LsServerPairs
-	lsServerPairs := mo.LsServerPairs {
-		Pairs: []mo.LsServerPair {
+	lsServerPairs := mo.LsServerPairs{
+		Pairs: []mo.LsServerPair{
 			{
 				Key: spDn,
-				LsServer: mo.LsServer {
-					Dn: spDn,
+				LsServer: mo.LsServer{
+					Dn:     spDn,
 					Status: "deleted",
 				},
 			},
 		},
 	}
-	req := api.ConfigConfMosRequest {
-		    Cookie: c.Cookie,
-		    InHierarchical: "false",
-		    InConfigs: lsServerPairs,
+	req := api.ConfigConfMosRequest{
+		Cookie:         c.Cookie,
+		InHierarchical: "false",
+		InConfigs:      lsServerPairs,
 	}
 	return c.ConfigConfMos(req, &out)
 }

@@ -3,8 +3,8 @@ package util
 import (
 	"strings"
 
-	"github.com/igor-feoktistov/go-ucsm-sdk/api"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/api"
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 )
 
 func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.LsServer, err error) {
@@ -15,16 +15,16 @@ func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.L
 		startOrg = "org-root"
 	}
 	var out mo.LsServerPairs
-	filter := api.FilterAnd {
-		Filters: []api.FilterAny {
-			api.FilterWildcard {
-				FilterProperty: api.FilterProperty {
-					Class: "lsServer",
+	filter := api.FilterAnd{
+		Filters: []api.FilterAny{
+			api.FilterWildcard{
+				FilterProperty: api.FilterProperty{
+					Class:    "lsServer",
 					Property: "dn",
-					Value: dnFilter,
+					Value:    dnFilter,
 				},
 			},
-			api.FilterEq {
+			api.FilterEq{
 				FilterProperty: api.FilterProperty{
 					Class:    "lsServer",
 					Property: "type",
@@ -33,13 +33,13 @@ func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.L
 			},
 		},
 	}
-	req := api.OrgResolveElementsRequest {
-		    Cookie: c.Cookie,
-		    Dn: startOrg,
-		    InHierarchical: "false",
-		    InClass: "lsServer",
-		    InSingleLevel: "true",
-		    InFilter: filter,
+	req := api.OrgResolveElementsRequest{
+		Cookie:         c.Cookie,
+		Dn:             startOrg,
+		InHierarchical: "false",
+		InClass:        "lsServer",
+		InSingleLevel:  "true",
+		InFilter:       filter,
 	}
 	if err = c.OrgResolveElements(req, &out); err == nil {
 		for _, pair := range out.Pairs {

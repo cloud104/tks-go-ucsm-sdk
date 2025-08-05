@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
-	"go-ucsm-sdk/mo"
+	mo "github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
@@ -14,28 +14,28 @@ func main() {
 	spDn := "org-root/org-Linux/ls-phygymdev01-lab"
 	iscsiVnicName := "iscsi0"
 	iscsiInitiatorName := "iqn.2005-02.com.open-iscsi:phygymdev01-lab.1"
-	iscsiVnicAddr := mo.VnicIPv4IscsiAddr {
-				Addr: "192.168.1.25",
-				Subnet: "255.255.255.0", 
-				DefGw: "192.168.1.1",
-				PrimDns: "192.168.4.10",
-				SecDns: "0.0.0.0",
+	iscsiVnicAddr := mo.VnicIPv4IscsiAddr{
+		Addr:    "192.168.1.25",
+		Subnet:  "255.255.255.0",
+		DefGw:   "192.168.1.1",
+		PrimDns: "192.168.4.10",
+		SecDns:  "0.0.0.0",
 	}
-	iscsiTargets := []mo.VnicIScsiStaticTargetIf {
-				{
-					IpAddress: "192.168.1.10",
-					Name: "iqn.1992-08.com.netapp:sn.f104401e43da11e760d600a098ade5c8:vs.23",
-					Port: "3260",
-					Priority: "2",
-					VnicLuns: []mo.VnicLun {{Bootable: "yes",Id: "0",},},
-				},
-				{
-					IpAddress: "192.168.2.10",
-					Name: "iqn.1992-08.com.netapp:sn.f104401e43da11e760d600a098ade5c8:vs.23",
-					Port: "3260",
-					Priority: "1",
-					VnicLuns: []mo.VnicLun {{Bootable: "yes",Id: "0",},},
-				},
+	iscsiTargets := []mo.VnicIScsiStaticTargetIf{
+		{
+			IpAddress: "192.168.1.10",
+			Name:      "iqn.1992-08.com.netapp:sn.f104401e43da11e760d600a098ade5c8:vs.23",
+			Port:      "3260",
+			Priority:  "2",
+			VnicLuns:  []mo.VnicLun{{Bootable: "yes", Id: "0"}},
+		},
+		{
+			IpAddress: "192.168.2.10",
+			Name:      "iqn.1992-08.com.netapp:sn.f104401e43da11e760d600a098ade5c8:vs.23",
+			Port:      "3260",
+			Priority:  "1",
+			VnicLuns:  []mo.VnicLun{{Bootable: "yes", Id: "0"}},
+		},
 	}
 	client, err := util.AaaLogin(endPoint, username, password)
 	if err != nil {

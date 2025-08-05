@@ -1,18 +1,18 @@
 package util
 
 import (
-        "crypto/tls"
-        "net/http"
+	"crypto/tls"
+	"net/http"
 
-	"github.com/igor-feoktistov/go-ucsm-sdk/api"
+	"github.com/gfalves87/tks-go-ucsm-sdk/api"
 )
 
 func AaaLogin(endPoint string, username string, password string) (client *api.Client, err error) {
-	tr := &http.Transport {
+	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	httpClient := &http.Client{Transport: tr}
-	config := api.Config {
+	config := api.Config{
 		Endpoint:   endPoint,
 		Username:   username,
 		Password:   password,

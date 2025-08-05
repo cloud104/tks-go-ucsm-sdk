@@ -1,17 +1,17 @@
 package api
 
 import (
-	"fmt"
 	"bytes"
 	"context"
 	"encoding/xml"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
 
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 	"golang.org/x/time/rate"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
 )
 
 // RateLimit limits the number of requests per second that a Client
@@ -152,9 +152,9 @@ func (c *Client) doPost(in, out interface{}) (err error) {
 // Decode XML response in inner XML document
 func (c *Client) getInnerXML(innerXml InnerXml, out mo.Any) (err error) {
 	if inner, err := xml.Marshal(innerXml); err == nil {
-	    // The requested managed objects to return are contained within the inner XML document,
-	    // which we need to unmarshal first into the given concrete type.
-	    err = xml.Unmarshal(inner, out)
+		// The requested managed objects to return are contained within the inner XML document,
+		// which we need to unmarshal first into the given concrete type.
+		err = xml.Unmarshal(inner, out)
 	}
 	return
 }
@@ -220,7 +220,7 @@ func (c *Client) ConfigResolveDn(in ConfigResolveDnRequest, out mo.Any) (err err
 	var resp ConfigResolveDnResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfig, out)
-	} 
+	}
 	return
 }
 
@@ -229,7 +229,7 @@ func (c *Client) ConfigResolveDns(in ConfigResolveDnsRequest, out mo.Any) (err e
 	var resp ConfigResolveDnsResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -238,7 +238,7 @@ func (c *Client) ConfigResolveClass(in ConfigResolveClassRequest, out mo.Any) (e
 	var resp ConfigResolveClassResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -247,7 +247,7 @@ func (c *Client) ConfigResolveClasses(in ConfigResolveClassesRequest, out mo.Any
 	var resp ConfigResolveClassesResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -256,7 +256,7 @@ func (c *Client) ConfigResolveChildren(in ConfigResolveChildrenRequest, out mo.A
 	var resp ConfigResolveChildrenResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -265,7 +265,7 @@ func (c *Client) OrgResolveElements(in OrgResolveElementsRequest, out mo.Any) (e
 	var resp OrgResolveElementsResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -274,7 +274,7 @@ func (c *Client) ConfigConfMo(in ConfigConfMoRequest, out mo.Any) (err error) {
 	var resp ConfigConfMoResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfig, out)
-	} 
+	}
 	return
 }
 
@@ -283,7 +283,7 @@ func (c *Client) ConfigConfMos(in ConfigConfMosRequest, out mo.Any) (err error) 
 	var resp ConfigConfMosResponse
 	if err = c.doPost(in, &resp); err == nil {
 		err = c.getInnerXML(resp.OutConfigs, out)
-	} 
+	}
 	return
 }
 
@@ -293,7 +293,7 @@ func (c *Client) ConfigEstimateImpact(in ConfigEstimateImpactRequest, outs ...mo
 	if err = c.doPost(in, &resp); err == nil {
 		for _, out := range outs {
 			if err = c.getInnerXML(resp.OutAffected, out); err != nil {
-				break;
+				break
 			}
 		}
 	}

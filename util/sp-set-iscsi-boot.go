@@ -1,22 +1,22 @@
 package util
 
 import (
-	"github.com/igor-feoktistov/go-ucsm-sdk/api"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/api"
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 )
 
 func SpSetIscsiBoot(c *api.Client, spDn string, iscsiVnicName string, iscsiInitiatorName string, iscsiVnicAddr mo.VnicIPv4IscsiAddr, iscsiTargets []mo.VnicIScsiStaticTargetIf) (vnicIscsi *mo.VnicIScsi, err error) {
 	var out mo.VnicIScsiPairs
-	vnicIScsiPairs := mo.VnicIScsiPairs {
-		Pairs: []mo.VnicIScsiPair {
+	vnicIScsiPairs := mo.VnicIScsiPairs{
+		Pairs: []mo.VnicIScsiPair{
 			{
 				Key: spDn + "/iscsi-" + iscsiVnicName,
-				VnicIScsi: mo.VnicIScsi {
+				VnicIScsi: mo.VnicIScsi{
 					InitiatorName: iscsiInitiatorName,
-					VnicVlan: mo.VnicVlan {
-						VnicIPv4If: mo.VnicIPv4If {
+					VnicVlan: mo.VnicVlan{
+						VnicIPv4If: mo.VnicIPv4If{
 							VnicIPv4IscsiAddr: iscsiVnicAddr,
-							VnicIPv4Dhcp: mo.VnicIPv4Dhcp {
+							VnicIPv4Dhcp: mo.VnicIPv4Dhcp{
 								Status: "deleted",
 							},
 						},
@@ -26,14 +26,14 @@ func SpSetIscsiBoot(c *api.Client, spDn string, iscsiVnicName string, iscsiIniti
 			},
 		},
 	}
-	req := api.ConfigConfMosRequest {
-		    Cookie: c.Cookie,
-		    InHierarchical: "true",
-		    InConfigs: vnicIScsiPairs,
+	req := api.ConfigConfMosRequest{
+		Cookie:         c.Cookie,
+		InHierarchical: "true",
+		InConfigs:      vnicIScsiPairs,
 	}
 	if err = c.ConfigConfMos(req, &out); err == nil {
-		 for _, pair := range out.Pairs {
-                        if pair.VnicIScsi.Dn == spDn + "/iscsi-" + iscsiVnicName {
+		for _, pair := range out.Pairs {
+			if pair.VnicIScsi.Dn == spDn+"/iscsi-"+iscsiVnicName {
 				vnicIscsi = &pair.VnicIScsi
 			}
 		}

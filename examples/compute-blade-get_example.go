@@ -3,19 +3,19 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
 	endPoint := "https://ucsm01.example.com/"
 	username := "admin"
 	password := "secret"
-	bladeSpec := util.BladeSpec {
-			//Dn: "sys/chassis-1/blade-2",
-			Model: "UCSB-B200-M4",
-			//NumOfCpus: 2,
-			//NumOfCores: 36,
-			//TotalMemory: 65536,
+	bladeSpec := util.BladeSpec{
+		//Dn: "sys/chassis-1/blade-2",
+		Model: "UCSB-B200-M4",
+		//NumOfCpus: 2,
+		//NumOfCores: 36,
+		//TotalMemory: 65536,
 	}
 	client, err := util.AaaLogin(endPoint, username, password)
 	//client.SetDebug(true)

@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/igor-feoktistov/go-ucsm-sdk/version"
-	"github.com/igor-feoktistov/go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/gfalves87/tks-go-ucsm-sdk/version"
 )
 
 // The remote API endpoint to which we POST requests.
@@ -250,27 +250,27 @@ type OrgResolveElementsResponse struct {
 // ConfigConfMoRequest type is used for constructing request
 // configConfMo that configures single managed object
 type ConfigConfMoRequest struct {
-	XMLName        xml.Name   `xml:"configConfMo"`
-	Cookie         string     `xml:"cookie,attr"`
-	Dn             string     `xml:"dn,attr"`
-	InHierarchical string     `xml:"inHierarchical,attr,omitempty"`
-	InConfig       mo.Any     `xml:"inConfig"`
+	XMLName        xml.Name `xml:"configConfMo"`
+	Cookie         string   `xml:"cookie,attr"`
+	Dn             string   `xml:"dn,attr"`
+	InHierarchical string   `xml:"inHierarchical,attr,omitempty"`
+	InConfig       mo.Any   `xml:"inConfig"`
 }
 
 // ConfigConfMoResponse is the response type associated with ConfigConfMoRequest.
 type ConfigConfMoResponse struct {
 	BaseResponse
-	XMLName    xml.Name `xml:"configConfMo"`
+	XMLName   xml.Name `xml:"configConfMo"`
 	OutConfig InnerXml `xml:"outConfig"`
 }
 
 // ConfigConfMosRequest type is used for constructing request
 // configConfMos that configures managed objects
 type ConfigConfMosRequest struct {
-	XMLName        xml.Name   `xml:"configConfMos"`
-	Cookie         string     `xml:"cookie,attr"`
-	InHierarchical string     `xml:"inHierarchical,attr,omitempty"`
-	InConfigs      mo.Any     `xml:"inConfigs"`
+	XMLName        xml.Name `xml:"configConfMos"`
+	Cookie         string   `xml:"cookie,attr"`
+	InHierarchical string   `xml:"inHierarchical,attr,omitempty"`
+	InConfigs      mo.Any   `xml:"inConfigs"`
 }
 
 // ConfigConfMosResponse is the response type associated with ConfigConfMosRequest
@@ -300,9 +300,9 @@ type LsInstantiateNTemplateRequest struct {
 	Cookie                    string   `xml:"cookie,attr"`
 	Dn                        string   `xml:"dn,attr"`
 	InTargetOrg               string   `xml:"inTargetOrg,attr"`
-        InServerNamePrefixOrEmpty string   `xml:"inServerNamePrefixOrEmpty,attr"`
-        InNumberOf                string   `xml:"inNumberOf,attr"`
-        InHierarchical            string   `xml:"inHierarchical,attr"`
+	InServerNamePrefixOrEmpty string   `xml:"inServerNamePrefixOrEmpty,attr"`
+	InNumberOf                string   `xml:"inNumberOf,attr"`
+	InHierarchical            string   `xml:"inHierarchical,attr"`
 }
 
 // LsInstantiateNTemplateResponse is the response type associated with LsInstantiateNTemplateRequest
@@ -314,12 +314,12 @@ type LsInstantiateNTemplateResponse struct {
 
 // LsInstantiateNNamedTemplateRequest type is used to instantiate service profile from service profile template
 type LsInstantiateNNamedTemplateRequest struct {
-	XMLName                   xml.Name `xml:"lsInstantiateNNamedTemplate"`
-	Cookie                    string   `xml:"cookie,attr"`
-	Dn                        string   `xml:"dn,attr"`
-	InTargetOrg               string   `xml:"inTargetOrg,attr"`
-        InNameSet                 []Dn     `xml:"inNameSet>dn"`
-        InHierarchical            string   `xml:"inHierarchical,attr"`
+	XMLName        xml.Name `xml:"lsInstantiateNNamedTemplate"`
+	Cookie         string   `xml:"cookie,attr"`
+	Dn             string   `xml:"dn,attr"`
+	InTargetOrg    string   `xml:"inTargetOrg,attr"`
+	InNameSet      []Dn     `xml:"inNameSet>dn"`
+	InHierarchical string   `xml:"inHierarchical,attr"`
 }
 
 // LsInstantiateNNamedTemplateResponse is the response type associated with LsInstantiateNNamedTemplateRequest

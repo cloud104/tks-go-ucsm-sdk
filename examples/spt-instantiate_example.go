@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
@@ -23,9 +23,9 @@ func main() {
 		fmt.Printf("Error: %s\n", err)
 	} else {
 		fmt.Printf("Dn: %s\n", lsServer.Dn)
-                fmt.Printf("\tStatus: %s\n", lsServer.Status)
-                fmt.Printf("\tAssign State: %s\n", lsServer.AssignState)
-                fmt.Printf("\tAssociation State: %s\n", lsServer.AssocState)
-                fmt.Printf("\tConfiguration State: %s\n", lsServer.ConfigState)
+		fmt.Printf("\tStatus: %s\n", lsServer.Status)
+		fmt.Printf("\tAssign State: %s\n", lsServer.AssignState)
+		fmt.Printf("\tAssociation State: %s\n", lsServer.AssocState)
+		fmt.Printf("\tConfiguration State: %s\n", lsServer.ConfigState)
 	}
 }

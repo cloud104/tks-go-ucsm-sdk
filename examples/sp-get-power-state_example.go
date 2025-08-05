@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
@@ -21,6 +21,6 @@ func main() {
 		fmt.Printf("Error: %s\n", err)
 	} else {
 		fmt.Printf("Dn: %s\n", spDn)
-                fmt.Printf("\tPower state: %s\n", powerState)
+		fmt.Printf("\tPower state: %s\n", powerState)
 	}
 }

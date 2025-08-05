@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"go-ucsm-sdk/util"
+	"github.com/gfalves87/tks-go-ucsm-sdk/util"
 )
 
 func main() {
@@ -28,9 +28,9 @@ func main() {
 			if lsServer.Type == "instance" {
 				fmt.Printf("SP: %s\n", lsServer.Dn)
 				fmt.Printf("\tType: %s\n", lsServer.Type)
-            			fmt.Printf("\tAssociation State: %s\n", lsServer.AssocState)
-            			fmt.Printf("\tConfiguration State: %s\n", lsServer.ConfigState)
-            			fmt.Printf("\tAssign State: %s\n", lsServer.AssignState)
+				fmt.Printf("\tAssociation State: %s\n", lsServer.AssocState)
+				fmt.Printf("\tConfiguration State: %s\n", lsServer.ConfigState)
+				fmt.Printf("\tAssign State: %s\n", lsServer.AssignState)
 				if lsServer.AssignState == "assigned" {
 					fmt.Printf("\tAssigned blade: %s\n", lsServer.PnDn)
 				}
