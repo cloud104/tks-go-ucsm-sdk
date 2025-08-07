@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 func SpWaitForAssociation(c *api.Client, spDn string, waitMax int) (assocState string, err error) {

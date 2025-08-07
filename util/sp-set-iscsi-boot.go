@@ -1,8 +1,8 @@
 package util
 
 import (
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 func SpSetIscsiBoot(c *api.Client, spDn string, iscsiVnicName string, iscsiInitiatorName string, iscsiVnicAddr mo.VnicIPv4IscsiAddr, iscsiTargets []mo.VnicIScsiStaticTargetIf) (vnicIscsi *mo.VnicIScsi, err error) {

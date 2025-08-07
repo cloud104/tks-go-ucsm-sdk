@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/util"
+	"github.com/cloud104/tks-go-ucsm-sdk/util"
 )
 
 func main() {

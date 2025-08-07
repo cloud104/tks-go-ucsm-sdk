@@ -3,8 +3,8 @@ package util
 import (
 	"strings"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.LsServer, err error) {

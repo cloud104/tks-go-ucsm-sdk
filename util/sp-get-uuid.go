@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 const uuidSize = 16

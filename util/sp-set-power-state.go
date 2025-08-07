@@ -1,8 +1,8 @@
 package util
 
 import (
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 func SpSetPowerState(c *api.Client, spDn string, powerState string) (lsPower *mo.LsPower, err error) {

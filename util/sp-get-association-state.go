@@ -3,8 +3,8 @@ package util
 import (
 	"fmt"
 
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
 )
 
 func SpGetAssociationState(c *api.Client, spDn string) (assocState string, err error) {

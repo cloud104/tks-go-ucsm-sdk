@@ -1,4 +1,4 @@
-module github.com/gfalves87/tks-go-ucsm-sdk
+module github.com/cloud104/tks-go-ucsm-sdk
 
 go 1.24.4
 

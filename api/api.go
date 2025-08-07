@@ -5,8 +5,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
-	"github.com/gfalves87/tks-go-ucsm-sdk/version"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/version"
 )
 
 // The remote API endpoint to which we POST requests.

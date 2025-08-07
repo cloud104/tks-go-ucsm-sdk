@@ -3,8 +3,8 @@ package util
 import (
 	"encoding/xml"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/api"
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/api"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
 // Re-defining mo.LsServer to allow empty SrcTemplName value

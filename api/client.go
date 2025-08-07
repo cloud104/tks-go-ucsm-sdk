@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/gfalves87/tks-go-ucsm-sdk/mo"
+	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 	"golang.org/x/time/rate"
 )
 
