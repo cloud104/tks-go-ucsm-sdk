@@ -6,7 +6,7 @@ import (
 )
 
 // Any represents any valid managed object.
-type Any interface{}
+type Any any
 
 // TopSystem provides general information about the system, such as the
 // name, IP address and current time.
@@ -36,32 +36,32 @@ type CommServiceEp struct {
 	ConfigStatusMessage string   `xml:"configStatusMessage,attr,omitempty"`
 	Description         string   `xml:"descr,attr,omitempty"`
 	Dn                  string   `xml:"dn,attr,omitempty"`
-	IntId               string   `xml:"intId,attr,omitempty"`
+	IntID               string   `xml:"intId,attr,omitempty"`
 	Name                string   `xml:"name,attr,omitempty"`
 	PolicyLevel         int      `xml:"policyLevel,attr,omitempty"`
 	PolicyOwner         string   `xml:"policyOwner,attr,omitempty"`
-	CommDns             CommDns  `xml:"commDns"`
+	CommDNS             CommDNS  `xml:"commDns"`
 }
 
 // CommDns contains the DNS settings of the UCS system.
-type CommDns struct {
+type CommDNS struct {
 	XMLName         xml.Name          `xml:"commDns"`
 	AdminState      string            `xml:"adminState,attr,omitempty"`
 	Description     string            `xml:"descr,attr,omitempty"`
 	Dn              string            `xml:"dn,attr,omitempty"`
 	Domain          string            `xml:"domain,attr,omitempty"`
-	IntId           string            `xml:"intId,attr,omitempty"`
+	IntID           string            `xml:"intId,attr,omitempty"`
 	Name            string            `xml:"name,attr,omitempty"`
 	OperationalPort int               `xml:"operPort,attr,omitempty"`
 	PolicyLevel     int               `xml:"policyLevel,attr,omitempty"`
 	PolicyOwner     string            `xml:"policyOwner,attr,omitempty"`
 	Port            int               `xml:"port,attr,omitempty"`
 	Proto           string            `xml:"proto,attr,omitempty"`
-	Providers       []CommDnsProvider `xml:"commDnsProvider"`
+	Providers       []CommDNSProvider `xml:"commDnsProvider"`
 }
 
 // CommDnsProvider represents a DNS service provider.
-type CommDnsProvider struct {
+type CommDNSProvider struct {
 	XMLName     xml.Name `xml:"commDnsProvider"`
 	AdminState  string   `xml:"adminState,attr,omitempty"`
 	Description string   `xml:"descr,attr,omitempty"`
@@ -89,7 +89,7 @@ type VersionApplication struct {
 	Version     string   `xml:"version,attr,omitempty"`
 }
 
-// EquipmentChassis represents a physical unit that can accomodate multiple blade servers.
+// EquipmentChassis represents a physical unit that can accommodate multiple blade servers.
 // For example, the Cisco UCS 5108 Blade Server Chassis is six rack units (6RU) high,
 // can mount in an industry-standard 19-inch rack and uses front-to-back cooling.
 type EquipmentChassis struct {
@@ -108,7 +108,7 @@ type EquipmentChassis struct {
 	Dn                         string               `xml:"dn,attr,omitempty"`
 	FabricEpDn                 string               `xml:"fabricEpDn,attr,omitempty"`
 	FltAggr                    int                  `xml:"fltAggr,attr,omitempty"`
-	Id                         string               `xml:"id,attr,omitempty"`
+	ID                         string               `xml:"id,attr,omitempty"`
 	LcTimestamp                string               `xml:"lcTs,attr,omitempty"`
 	LicGP                      int                  `xml:"licGP,attr,omitempty"`
 	LicState                   string               `xml:"licState,attr,omitempty"`
@@ -146,7 +146,7 @@ type ComputePhysical struct {
 	Association                         string               `xml:"association,attr,omitempty"`
 	Availability                        string               `xml:"availability,attr,omitempty"`
 	AvailableMemory                     int                  `xml:"availableMemory,attr,omitempty"`
-	ChassisId                           string               `xml:"chassisId,attr,omitempty"`
+	ChassisID                           string               `xml:"chassisId,attr,omitempty"`
 	CheckPoint                          string               `xml:"checkPoint,attr,omitempty"`
 	ConnPath                            string               `xml:"connPath,attr,omitempty"`
 	ConnStatus                          string               `xml:"connStatus,attr,omitempty"`
@@ -155,10 +155,10 @@ type ComputePhysical struct {
 	DiscoveryStatus                     string               `xml:"discoveryStatus,attr,omitempty"`
 	Dn                                  string               `xml:"dn,attr,omitempty"`
 	FltAggr                             int                  `xml:"fltAggr,attr,omitempty"`
-	IntId                               string               `xml:"intId,attr,omitempty"`
+	IntID                               string               `xml:"intId,attr,omitempty"`
 	Lc                                  string               `xml:"lc,attr,omitempty"`
 	LcTimestamp                         string               `xml:"lcTs,attr,omitempty"`
-	LocalId                             string               `xml:"localId,attr,omitempty"`
+	LocalID                             string               `xml:"localId,attr,omitempty"`
 	LowVoltageMemory                    string               `xml:"lowVoltageMemory,attr,omitempty"`
 	ManagingInstance                    string               `xml:"managingInst,attr,omitempty"`
 	MemorySpeed                         string               `xml:"memorySpeed,attr,omitempty"`
@@ -179,7 +179,7 @@ type ComputePhysical struct {
 	OperationalQualifier                string               `xml:"operQualifier,attr,omitempty"`
 	OperationalState                    string               `xml:"operState,attr,omitempty"`
 	Operability                         string               `xml:"operability,attr,omitempty"`
-	OriginalUuid                        string               `xml:"originalUuid,attr,omitempty"`
+	OriginalUUID                        string               `xml:"originalUuid,attr,omitempty"`
 	PartNumber                          string               `xml:"partNumber,attr,omitempty"`
 	PolicyLevel                         int                  `xml:"policyLevel,attr,omitempty"`
 	PolicyOwner                         string               `xml:"policyOwner,attr,omitempty"`
@@ -187,11 +187,11 @@ type ComputePhysical struct {
 	Revision                            string               `xml:"revision,attr,omitempty"`
 	ScaledMode                          string               `xml:"scaledMode,attr,omitempty"`
 	Serial                              string               `xml:"serial,attr,omitempty"`
-	ServerId                            string               `xml:"serverId,attr,omitempty"`
-	SlotId                              int                  `xml:"slotId,attr,omitempty"`
+	ServerID                            string               `xml:"serverId,attr,omitempty"`
+	SlotID                              int                  `xml:"slotId,attr,omitempty"`
 	TotalMemory                         int                  `xml:"totalMemory,attr,omitempty"`
 	UserLabel                           string               `xml:"usrLbl,attr,omitempty"`
-	Uuid                                string               `xml:"uuid,attr,omitempty"`
+	UUID                                string               `xml:"uuid,attr,omitempty"`
 	Vendor                              string               `xml:"vendor,attr,omitempty"`
 	Vid                                 string               `xml:"vid,attr,omitempty"`
 	ComputeBoard                        ComputeBoard         `xml:"computeBoard"`
@@ -234,10 +234,10 @@ type ComputeItem struct {
 type ComputeBoard struct {
 	XMLName                    xml.Name          `xml:"computeBoard"`
 	CmosVoltage                string            `xml:"cmosVoltage,attr,omitempty"`
-	CpuTypeDescription         string            `xml:"cpuTypeDescription,attr,omitempty"`
+	CPUTypeDescription         string            `xml:"cpuTypeDescription,attr,omitempty"`
 	Dn                         string            `xml:"dn,attr,omitempty"`
 	FaultQualifier             string            `xml:"faultQualifier,attr,omitempty"`
-	Id                         int               `xml:"id,attr,omitempty"`
+	ID                         int               `xml:"id,attr,omitempty"`
 	LocationDn                 string            `xml:"locationDn,attr,omitempty"`
 	Model                      string            `xml:"model,attr,omitempty"`
 	OperationalPower           string            `xml:"operPower,attr,omitempty"`
@@ -262,10 +262,10 @@ type ComputeBoard struct {
 type MemoryArray struct {
 	XMLName                    xml.Name     `xml:"memoryArray"`
 	ChildAction                string       `xml:"childAction,attr,omitempty"`
-	CpuId                      int          `xml:"cpuId,attr,omitempty"`
+	CPUID                      int          `xml:"cpuId,attr,omitempty"`
 	CurrentCapacity            int          `xml:"currCapacity,attr,omitempty"`
 	ErrorCorrectionn           string       `xml:"errorCorrection,attr,omitempty"`
-	Id                         int          `xml:"id,attr,omitempty"`
+	ID                         int          `xml:"id,attr,omitempty"`
 	LocationDn                 string       `xml:"locationDn,attr,omitempty"`
 	MaxCapacity                int          `xml:"maxCapacity,attr,omitempty"`
 	MaxDevices                 int          `xml:"maxDevices,attr,omitempty"`
@@ -296,7 +296,7 @@ type MemoryUnit struct {
 	ChildAction                string   `xml:"childAction,attr,omitempty"`
 	Clock                      string   `xml:"clock,attr,omitempty"`
 	FormFactor                 string   `xml:"formFactor,attr,omitempty"`
-	Id                         int      `xml:"id,attr,omitempty"`
+	ID                         int      `xml:"id,attr,omitempty"`
 	Latency                    string   `xml:"latency,attr,omitempty"`
 	Location                   string   `xml:"location,attr,omitempty"`
 	LocationDn                 string   `xml:"locationDn,attr,omitempty"`
@@ -328,7 +328,7 @@ type ProcessorUnit struct {
 	ChildAction                string   `xml:"childAction,attr,omitempty"`
 	Cores                      int      `xml:"cores,attr,omitempty"`
 	CoresEnabled               int      `xml:"coresEnabled,attr,omitempty"`
-	Id                         int      `xml:"id,attr,omitempty"`
+	ID                         int      `xml:"id,attr,omitempty"`
 	LocationDn                 string   `xml:"locationDn,attr,omitempty"`
 	Model                      string   `xml:"model,attr,omitempty"`
 	OperationalQualifierReason string   `xml:"operQualifierReason,attr,omitempty"`
@@ -356,15 +356,15 @@ type AdaptorUnit struct {
 	XMLName                       xml.Name                       `xml:"adaptorUnit"`
 	AdminPowerState               string                         `xml:"adminPowerState,attr,omitempty"`
 	BaseMac                       string                         `xml:"baseMac,attr,omitempty"`
-	BladeId                       int                            `xml:"bladeId,attr,omitempty"`
-	CartridgeId                   int                            `xml:"cartridgeId,attr,omitempty"`
-	ChassisId                     string                         `xml:"chassisId,attr,omitempty"`
+	BladeID                       int                            `xml:"bladeId,attr,omitempty"`
+	CartridgeID                   int                            `xml:"cartridgeId,attr,omitempty"`
+	ChassisID                     string                         `xml:"chassisId,attr,omitempty"`
 	ChildAction                   string                         `xml:"childAction,attr,omitempty"`
 	ConnPath                      string                         `xml:"connPath,attr,omitempty"`
 	ConnStatus                    string                         `xml:"connStatus,attr,omitempty"`
 	DiscoveryStatus               string                         `xml:"discoveryStatus,attr,omitempty"`
 	FltAggr                       int                            `xml:"fltAggr,attr,omitempty"`
-	Id                            int                            `xml:"id,attr,omitempty"`
+	ID                            int                            `xml:"id,attr,omitempty"`
 	Integrated                    string                         `xml:"integrated,attr,omitempty"`
 	LocationDn                    string                         `xml:"locationDn,attr,omitempty"`
 	ManagingInstance              string                         `xml:"managingInst,attr,omitempty"`
@@ -401,13 +401,13 @@ type AdaptorHostEthernetInterface struct {
 	AdminState                 string                `xml:"adminState,attr,omitempty"`
 	BootDev                    string                `xml:"bootDev,attr,omitempty"`
 	CdnName                    string                `xml:"cdnName,attr,omitempty"`
-	ChassisId                  string                `xml:"chassisId,attr,omitempty"`
+	ChassisID                  string                `xml:"chassisId,attr,omitempty"`
 	ChildAction                string                `xml:"childAction,attr,omitempty"`
 	Discovery                  string                `xml:"discovery,attr,omitempty"`
 	EpDn                       string                `xml:"epDn,attr,omitempty"`
 	FltAggr                    int                   `xml:"fltAggr,attr,omitempty"`
 	HostPort                   string                `xml:"hostPort,attr,omitempty"`
-	Id                         int                   `xml:"id,attr,omitempty"`
+	ID                         int                   `xml:"id,attr,omitempty"`
 	InterfaceRole              string                `xml:"ifRole,attr,omitempty"`
 	InterfaceType              string                `xml:"ifType,attr,omitempty"`
 	Lc                         string                `xml:"lc,attr,omitempty"`
@@ -425,13 +425,13 @@ type AdaptorHostEthernetInterface struct {
 	PciAddress                 string                `xml:"pciAddr,attr,omitempty"`
 	PciFunc                    int                   `xml:"pciFunc,attr,omitempty"`
 	PciSlot                    int                   `xml:"pciSlot,attr,omitempty"`
-	PeerChassisId              string                `xml:"peerChassisId,attr,omitempty"`
+	PeerChassisID              string                `xml:"peerChassisId,attr,omitempty"`
 	PeerDn                     string                `xml:"peerDn,attr,omitempty"`
-	PeerPortId                 int                   `xml:"peerPortId,attr,omitempty"`
-	PeerSlotId                 int                   `xml:"peerSlotId,attr,omitempty"`
+	PeerPortID                 int                   `xml:"peerPortId,attr,omitempty"`
+	PeerSlotID                 int                   `xml:"peerSlotId,attr,omitempty"`
 	Perf                       string                `xml:"perf,attr,omitempty"`
 	PfDn                       string                `xml:"pfDn,attr,omitempty"`
-	PortId                     int                   `xml:"portId,attr,omitempty"`
+	PortID                     int                   `xml:"portId,attr,omitempty"`
 	Power                      string                `xml:"power,attr,omitempty"`
 	Presence                   string                `xml:"presence,attr,omitempty"`
 	Purpose                    string                `xml:"purpose,attr,omitempty"`
@@ -439,8 +439,8 @@ type AdaptorHostEthernetInterface struct {
 	Rn                         string                `xml:"rn,attr,omitempty"`
 	Serial                     string                `xml:"serial,attr,omitempty"`
 	Side                       string                `xml:"side,attr,omitempty"`
-	SlotId                     int                   `xml:"slotId,attr,omitempty"`
-	SwitchId                   string                `xml:"switchId,attr,omitempty"`
+	SlotID                     int                   `xml:"slotId,attr,omitempty"`
+	SwitchID                   string                `xml:"switchId,attr,omitempty"`
 	Thermal                    string                `xml:"thermal,attr,omitempty"`
 	Transport                  string                `xml:"transport,attr,omitempty"`
 	Type                       string                `xml:"type,attr,omitempty"`
@@ -457,35 +457,35 @@ type ManagementInterface struct {
 	XMLName        xml.Name `xml:"mgmtIf"`
 	Access         string   `xml:"access,attr,omitempty"`
 	AdminState     string   `xml:"adminState,attr,omitempty"`
-	AggrPortId     int      `xml:"aggrPortId,attr,omitempty"`
-	ChassisId      string   `xml:"chassisId,attr,omitempty"`
+	AggrPortID     int      `xml:"aggrPortId,attr,omitempty"`
+	ChassisID      string   `xml:"chassisId,attr,omitempty"`
 	ChildAction    string   `xml:"childAction,attr,omitempty"`
 	Discovery      string   `xml:"discovery,attr,omitempty"`
 	EpDn           string   `xml:"epDn,attr,omitempty"`
 	ExtBroadcast   net.IP   `xml:"extBroadcast,attr,omitempty"`
 	ExtGateway     net.IP   `xml:"extGw,attr,omitempty"`
-	ExtIp          net.IP   `xml:"extIp,attr,omitempty"`
+	ExtIP          net.IP   `xml:"extIp,attr,omitempty"`
 	ExtNetmask     net.IP   `xml:"extMask,attr,omitempty"`
-	Id             int      `xml:"id,attr,omitempty"`
+	ID             int      `xml:"id,attr,omitempty"`
 	InterfaceRole  string   `xml:"ifRole,attr,omitempty"`
 	InterfaceType  string   `xml:"ifType,attr,omitempty"`
-	InstanceId     int      `xml:"instanceId,attr,omitempty"`
+	InstanceID     int      `xml:"instanceID,attr,omitempty"`
 	Locale         string   `xml:"locale,attr,omitempty"`
-	Ip             net.IP   `xml:"ip,attr,omitempty"`
+	IP             net.IP   `xml:"ip,attr,omitempty"`
 	Mac            string   `xml:"mac,attr,omitempty"`
 	Netmask        net.IP   `xml:"mask,attr,omitempty"`
 	Name           string   `xml:"name,attr,omitempty"`
-	PeerAggrPortId int      `xml:"peerAggrPortId,attr,omitempty"`
-	PeerChassisId  string   `xml:"peerChassisId,attr,omitempty"`
+	PeerAggrPortID int      `xml:"peerAggrPortId,attr,omitempty"`
+	PeerChassisID  string   `xml:"peerChassisID,attr,omitempty"`
 	PeerDn         string   `xml:"peerDn,attr,omitempty"`
-	PeerPortId     int      `xml:"peerPortId,attr,omitempty"`
-	PeerSlotId     int      `xml:"peerSlotId,attr,omitempty"`
-	PortId         int      `xml:"portId,attr,omitempty"`
+	PeerPortID     int      `xml:"peerPortId,attr,omitempty"`
+	PeerSlotID     int      `xml:"peerSlotId,attr,omitempty"`
+	PortID         int      `xml:"portId,attr,omitempty"`
 	Rn             string   `xml:"rn,attr,omitempty"`
-	SlotId         int      `xml:"slotId,attr,omitempty"`
+	SlotID         int      `xml:"slotId,attr,omitempty"`
 	StateQual      string   `xml:"stateQual,attr,omitempty"`
 	Subject        string   `xml:"subject,attr,omitempty"`
-	SwitchId       string   `xml:"switchId,attr,omitempty"`
+	SwitchID       string   `xml:"switchId,attr,omitempty"`
 	Transport      string   `xml:"transport,attr,omitempty"`
 	Type           string   `xml:"type,attr,omitempty"`
 	Vnet           int      `xml:"vnet,attr,omitempty"`
@@ -498,7 +498,7 @@ type EquipmentFanModule struct {
 	ChildAction          string         `xml:"childAction,attr,omitempty"`
 	Dn                   string         `xml:"dn,attr,omitempty"`
 	FltAggr              int            `xml:"fltAggr,attr,omitempty"`
-	Id                   int            `xml:"id,attr,omitempty"`
+	ID                   int            `xml:"id,attr,omitempty"`
 	ManufacturingTime    string         `xml:"mfgTime,attr,omitempty"`
 	Model                string         `xml:"model,attr,omitempty"`
 	OperationalQualifier string         `xml:"operQualifier,attr,omitempty"`
@@ -525,7 +525,7 @@ type EquipmentFan struct {
 	FanSpeedPolicyAdminState       string   `xml:"fanSpeedPolicyAdminState,attr,omitempty"`
 	FanSpeedPolicyOperationalState string   `xml:"fanSpeedPolicyOperState,attr,omitempty"`
 	FltAggr                        int      `xml:"fltAggr,attr,omitempty"`
-	Id                             int      `xml:"id,attr,omitempty"`
+	ID                             int      `xml:"id,attr,omitempty"`
 	InternalType                   string   `xml:"intType,attr,omitempty"`
 	Model                          string   `xml:"model,attr,omitempty"`
 	Module                         int      `xml:"module,attr,omitempty"`
@@ -610,15 +610,15 @@ type StorageController struct {
 	Dn                         string               `xml:"dn,attr,omitempty"`
 	FaultMonitoring            string               `xml:"faultMonitoring,attr,omitempty"`
 	HardwareRevision           string               `xml:"hwRevision,attr,omitempty"`
-	Id                         int                  `xml:"id,attr,omitempty"`
-	IdCount                    string               `xml:"idCount,attr,omitempty"`
+	ID                         int                  `xml:"id,attr,omitempty"`
+	IDCount                    string               `xml:"idCount,attr,omitempty"`
 	Lc                         string               `xml:"lc,attr,omitempty"`
 	LocationDn                 string               `xml:"locationDn,attr,omitempty"`
 	Mode                       string               `xml:"mode,attr,omitempty"`
 	Model                      string               `xml:"model,attr,omitempty"`
 	OnBoardMemoryPresent       string               `xml:"onBoardMemoryPresent,attr,omitempty"`
 	OnBoardMemorySize          string               `xml:"onBoardMemorySize,attr,omitempty"`
-	OobControllerId            string               `xml:"oobControllerId,attr,omitempty"`
+	OobControllerID            string               `xml:"oobControllerId,attr,omitempty"`
 	OobInterfaceSupported      string               `xml:"oobInterfaceSupported,attr,omitempty"`
 	OperationalQualifierReason string               `xml:"operQualifierReason,attr,omitempty"`
 	OperationalState           string               `xml:"operState,attr,omitempty"`
@@ -637,7 +637,7 @@ type StorageController struct {
 	RebuildRate                string               `xml:"rebuildRate,attr,omitempty"`
 	Revision                   string               `xml:"revision,attr,omitempty"`
 	Serial                     string               `xml:"serial,attr,omitempty"`
-	SubOemId                   string               `xml:"subOemId,attr,omitempty"`
+	SubOemID                   string               `xml:"subOemId,attr,omitempty"`
 	SupportedStripSizes        string               `xml:"supportedStripSizes,attr,omitempty"`
 	Thermal                    string               `xml:"thermal,attr,omitempty"`
 	Type                       string               `xml:"type,attr,omitempty"`
@@ -673,8 +673,8 @@ type ManagementController struct {
 	DimmBlackListingOperationalState string                `xml:"dimmBlacklistingOperState,attr,omitempty"`
 	DiskZoningState                  string                `xml:"diskZoningState,attr,omitempty"`
 	Dn                               string                `xml:"dn,attr,omitempty"`
-	Guid                             string                `xml:"guid,attr,omitempty"`
-	Id                               string                `xml:"id,attr,omitempty"`
+	GUID                             string                `xml:"guid,attr,omitempty"`
+	ID                               string                `xml:"id,attr,omitempty"`
 	LastRebootReason                 string                `xml:"lastRebootReason,attr,omitempty"`
 	Model                            string                `xml:"model,attr,omitempty"`
 	OperationalConnection            string                `xml:"operConn,attr,omitempty"`
@@ -715,16 +715,16 @@ type NetworkElement struct {
 	ExpectedMemory            int                  `xml:"expectedMemory,attr,omitempty"`
 	FltAggr                   int                  `xml:"fltAggr,attr,omitempty"`
 	ForceEvac                 string               `xml:"forceEvac,attr,omitempty"`
-	Id                        string               `xml:"id,attr,omitempty"`
+	ID                        string               `xml:"id,attr,omitempty"`
 	InbandInterfaceGateway    net.IP               `xml:"inbandIfGw,attr,omitempty"`
-	InbandInterfaceIp         net.IP               `xml:"inbandIfIp,attr,omitempty"`
+	InbandInterfaceIP         net.IP               `xml:"inbandIfIp,attr,omitempty"`
 	InbandInterfaceNetmask    net.IP               `xml:"inbandIfMask,attr,omitempty"`
 	InbandInterfaceVnet       int                  `xml:"inbandIfVnet,attr,omitempty"`
 	InventoryStatus           string               `xml:"inventoryStatus,attr,omitempty"`
 	MinActiveFan              int                  `xml:"minActiveFan,attr,omitempty"`
 	Model                     string               `xml:"model,attr,omitempty"`
 	OobInterfaceGateway       net.IP               `xml:"oobIfGw,attr,omitempty"`
-	OobInterfaceIp            net.IP               `xml:"oobIfIp,attr,omitempty"`
+	OobInterfaceIP            net.IP               `xml:"oobIfIp,attr,omitempty"`
 	OobInterfaceNetmask       net.IP               `xml:"oobIfMask,attr,omitempty"`
 	OobInterfaceMac           string               `xml:"oobIfMac,attr,omitempty"`
 	OperEvacState             string               `xml:"operEvacState,attr,omitempty"`
@@ -771,7 +771,7 @@ type LsServer struct {
 	GraphicsCardPolicyName         string   `xml:"graphicsCardPolicyName,attr,omitempty"`
 	HostFwPolicyName               string   `xml:"hostFwPolicyName,attr,omitempty"`
 	IdentPoolName                  string   `xml:"identPoolName,attr,omitempty"`
-	IntId                          string   `xml:"intId,attr,omitempty"`
+	IntID                          string   `xml:"intId,attr,omitempty"`
 	KvmMgmtPolicyName              string   `xml:"kvmMgmtPolicyName,attr,omitempty"`
 	LocalDiskPolicyName            string   `xml:"localDiskPolicyName,attr,omitempty"`
 	MaintPolicyName                string   `xml:"maintPolicyName,attr,omitempty"`
@@ -805,7 +805,7 @@ type LsServer struct {
 	PolicyOwner                    string   `xml:"policyOwner,attr,omitempty"`
 	PowerPolicyName                string   `xml:"powerPolicyName,attr,omitempty"`
 	PowerSyncPolicyName            string   `xml:"powerSyncPolicyName,attr,omitempty"`
-	PropAcl                        string   `xml:"propAcl,attr,omitempty"`
+	PropACL                        string   `xml:"propAcl,attr,omitempty"`
 	ResolveRemote                  string   `xml:"resolveRemote,attr,omitempty"`
 	ScrubPolicyName                string   `xml:"scrubPolicyName,attr,omitempty"`
 	SolPolicyName                  string   `xml:"solPolicyName,attr,omitempty"`
@@ -815,8 +815,8 @@ type LsServer struct {
 	SvnicConfig                    string   `xml:"svnicConfig,attr,omitempty"`
 	Type                           string   `xml:"type,attr,omitempty"`
 	UsrLbl                         string   `xml:"usrLbl,attr,omitempty"`
-	Uuid                           string   `xml:"uuid,attr,omitempty"`
-	UuidSuffix                     string   `xml:"uuidSuffix,attr,omitempty"`
+	UUID                           string   `xml:"uuid,attr,omitempty"`
+	UUIDSuffix                     string   `xml:"uuidSuffix,attr,omitempty"`
 	VconProfileName                string   `xml:"vconProfileName,attr,omitempty"`
 	VmediaPolicyName               string   `xml:"vmediaPolicyName,attr,omitempty"`
 }
@@ -824,26 +824,26 @@ type LsServer struct {
 // FaultInst is getting injected into Mos in case of faults
 type FaultInst struct {
 	XMLName         xml.Name
-	Ack             string   `xml:"ack,attr,omitempty"`
-	Cause           string   `xml:"cause,attr,omitempty"`
-	ChangeSet       string   `xml:"changeSet,attr,omitempty"`
-	ChildAction     string   `xml:"childAction,attr,omitempty"`
-	Code            string   `xml:"code,attr,omitempty"`
-	Created         string   `xml:"created,attr,omitempty"`
-	Descr           string   `xml:"descr,attr,omitempty"`
-	HighestSeverity string   `xml:"highestSeverity,attr,omitempty"`
-	Id              string   `xml:"id,attr,omitempty"`
-	LastTransition  string   `xml:"lastTransition,attr,omitempty"`
-	Lc              string   `xml:"lc,attr,omitempty"`
-	Occur           string   `xml:"occur,attr,omitempty"`
-	OrigSeverity    string   `xml:"origSeverity,attr,omitempty"`
-	PrevSeverity    string   `xml:"prevSeverity,attr,omitempty"`
-	Rn              string   `xml:"rn,attr,omitempty"`
-	Rule            string   `xml:"rule,attr,omitempty"`
-	Severity        string   `xml:"severity,attr,omitempty"`
-	Status          string   `xml:"status,attr,omitempty"`
-	Tags            string   `xml:"tags,attr,omitempty"`
-	Type            string   `xml:"type,attr,omitempty"`
+	Ack             string `xml:"ack,attr,omitempty"`
+	Cause           string `xml:"cause,attr,omitempty"`
+	ChangeSet       string `xml:"changeSet,attr,omitempty"`
+	ChildAction     string `xml:"childAction,attr,omitempty"`
+	Code            string `xml:"code,attr,omitempty"`
+	Created         string `xml:"created,attr,omitempty"`
+	Descr           string `xml:"descr,attr,omitempty"`
+	HighestSeverity string `xml:"highestSeverity,attr,omitempty"`
+	ID              string `xml:"id,attr,omitempty"`
+	LastTransition  string `xml:"lastTransition,attr,omitempty"`
+	Lc              string `xml:"lc,attr,omitempty"`
+	Occur           string `xml:"occur,attr,omitempty"`
+	OrigSeverity    string `xml:"origSeverity,attr,omitempty"`
+	PrevSeverity    string `xml:"prevSeverity,attr,omitempty"`
+	Rn              string `xml:"rn,attr,omitempty"`
+	Rule            string `xml:"rule,attr,omitempty"`
+	Severity        string `xml:"severity,attr,omitempty"`
+	Status          string `xml:"status,attr,omitempty"`
+	Tags            string `xml:"tags,attr,omitempty"`
+	Type            string `xml:"type,attr,omitempty"`
 }
 
 // LsBinding represents Service Profile Binding Mo
@@ -858,48 +858,48 @@ type LsBinding struct {
 	Name               string     `xml:"name,attr,omitempty"`
 	OperState          string     `xml:"operState,attr,omitempty"`
 	PnDn               string     `xml:"pnDn,attr,omitempty"`
-	PropAcl            string     `xml:"propAcl,attr,omitempty"`
+	PropACL            string     `xml:"propAcl,attr,omitempty"`
 	RestrictMigration  string     `xml:"restrictMigration,attr,omitempty"`
 	FaultInst          *FaultInst `xml:"faultInst,omitempty"`
 }
 
-// LsBindingMo represents Service Profile Binding Mo to retrive from OutConfigs
+// LsBindingMo represents Service Profile Binding Mo to retrieve from OutConfigs
 type LsBindingMo struct {
-	XMLName xml.Name
+	XMLName   xml.Name
 	LsBinding LsBinding `xml:"lsBinding"`
 }
 
-// LsBindingPair representes pair structure for lsBinding class
+// LsBindingPair represents pair structure for lsBinding class
 // returned in OutConfigs by ConfigConfMos
 type LsBindingPair struct {
-	XMLName xml.Name
-	Key       string  `xml:"key,attr"`
+	XMLName   xml.Name
+	Key       string `xml:"key,attr"`
 	LsBinding LsBinding
 }
 
 // LsBindingPairs represents Pairs array for lsBinding class
 type LsBindingPairs struct {
 	XMLName xml.Name
-        Pairs [] LsBindingPair `xml:"pair"`
+	Pairs   []LsBindingPair `xml:"pair"`
 }
 
 // LsRequirement represents lsRequirement Mo
 type LsRequirement struct {
-	XMLName             xml.Name `xml:"lsRequirement"`
-	AdminAction         string   `xml:"adminAction,attr,omitempty"`
-	AdminActionTrigger  string   `xml:"adminActionTrigger,attr,omitempty"`
-	AssignedToDn        string   `xml:"assignedToDn,attr,omitempty"`
-	ComputeEpDn         string   `xml:"computeEpDn,attr,omitempty"`
-	Dn                  string   `xml:"dn,attr,omitempty"`
-	Issues              string   `xml:"issues,attr,omitempty"`
-	Name                string   `xml:"name,attr,omitempty"`
-	OperName            string   `xml:"operName,attr,omitempty"`
-	OperState           string   `xml:"operState,attr,omitempty"`
-	PnDn                string   `xml:"pnDn,attr,omitempty"`
-	PnPoolDn            string   `xml:"pnPoolDn,attr,omitempty"`
-	Qualifier           string   `xml:"qualifier,attr,omitempty"`
-	RestrictMigration   string   `xml:"restrictMigration,attr,omitempty"`
-	Status              string   `xml:"status,attr,omitempty"`
+	XMLName            xml.Name `xml:"lsRequirement"`
+	AdminAction        string   `xml:"adminAction,attr,omitempty"`
+	AdminActionTrigger string   `xml:"adminActionTrigger,attr,omitempty"`
+	AssignedToDn       string   `xml:"assignedToDn,attr,omitempty"`
+	ComputeEpDn        string   `xml:"computeEpDn,attr,omitempty"`
+	Dn                 string   `xml:"dn,attr,omitempty"`
+	Issues             string   `xml:"issues,attr,omitempty"`
+	Name               string   `xml:"name,attr,omitempty"`
+	OperName           string   `xml:"operName,attr,omitempty"`
+	OperState          string   `xml:"operState,attr,omitempty"`
+	PnDn               string   `xml:"pnDn,attr,omitempty"`
+	PnPoolDn           string   `xml:"pnPoolDn,attr,omitempty"`
+	Qualifier          string   `xml:"qualifier,attr,omitempty"`
+	RestrictMigration  string   `xml:"restrictMigration,attr,omitempty"`
+	Status             string   `xml:"status,attr,omitempty"`
 }
 
 // LsIssues represents lsIssues Mo
@@ -909,7 +909,7 @@ type LsIssues struct {
 	Dn                     string   `xml:"dn,attr,omitempty"`
 	IscsiConfigIssues      string   `xml:"iscsiConfigIssues,attr,omitempty"`
 	NetworkConfigIssues    string   `xml:"networkConfigIssues,attr,omitempty"`
-	PropAcl                string   `xml:"propAcl,attr,omitempty"`
+	PropACL                string   `xml:"propAcl,attr,omitempty"`
 	ServerConfigIssues     string   `xml:"serverConfigIssues,attr,omitempty"`
 	ServerExtdConfigIssues string   `xml:"serverExtdConfigIssues,attr,omitempty"`
 	Status                 string   `xml:"status,attr,omitempty"`
@@ -917,62 +917,62 @@ type LsIssues struct {
 	VnicConfigIssues       string   `xml:"vnicConfigIssues,attr,omitempty"`
 }
 
-// LsServerPair representes structure for lsServer class
+// LsServerPair represents structure for lsServer class
 // returned in OutConfigs/pair by orgResolveElements call and given Dn
 type LsServerPair struct {
-	XMLName xml.Name
-	Key      string  `xml:"key,attr"`
+	XMLName  xml.Name
+	Key      string `xml:"key,attr"`
 	LsServer LsServer
 }
 
 // LsServerPairs represents Pairs array for lsServer class
 type LsServerPairs struct {
 	XMLName xml.Name
-        Pairs   []LsServerPair `xml:"pair"`
+	Pairs   []LsServerPair `xml:"pair"`
 }
 
-// LsIssuesPairs representes structure for lsIssues class
+// LsIssuesPairs represents structure for lsIssues class
 // returned in OutConfigs/pair
 type LsIssuesPair struct {
-	XMLName xml.Name
-	Key      string  `xml:"key,attr"`
+	XMLName  xml.Name
+	Key      string `xml:"key,attr"`
 	LsIssues LsIssues
 }
 
 // LsServerPairs represents Pairs array for lsServer class
 type LsIssuesPairs struct {
 	XMLName xml.Name
-        Pairs [] LsIssuesPair `xml:"pair"`
+	Pairs   []LsIssuesPair `xml:"pair"`
 }
 
 // Represents generic Mo pair
 type MoPair struct {
 	XMLName xml.Name
-	Key string `xml:"key,attr"`
-	Mo  Any
+	Key     string `xml:"key,attr"`
+	Mo      Any
 }
 
 // Represents generic Mo pairs
 type MoPairs struct {
 	XMLName xml.Name
-        Pairs [] MoPair `xml:"pair"`
+	Pairs   []MoPair `xml:"pair"`
 }
 
 // Blades represents structure  for computeBlade class
 // returned in OutConfigs by ConfigResolveClass call
 type Blades struct {
-	XMLName xml.Name
-	ComputeBlades  []ComputeBlade `xml:"computeBlade"`
+	XMLName       xml.Name
+	ComputeBlades []ComputeBlade `xml:"computeBlade"`
 }
 
 // LsPower represents structure for lsPower class
 // submitted in OutConfigs for ConfigConfMol call
 type LsPower struct {
 	XMLName           xml.Name
-	Dn                string   `xml:"dn,attr,omitempty"`
-	PropAcl           string   `xml:"propAcl,attr,omitempty"`
-	SoftShutdownTimer string   `xml:"softShutdownTimer,attr,omitempty"`
-	State             string   `xml:"state,attr,omitempty"`
+	Dn                string `xml:"dn,attr,omitempty"`
+	PropACL           string `xml:"propAcl,attr,omitempty"`
+	SoftShutdownTimer string `xml:"softShutdownTimer,attr,omitempty"`
+	State             string `xml:"state,attr,omitempty"`
 }
 
 // LsPower represents structure for lsPower class
@@ -985,60 +985,66 @@ type LsPowerMo struct {
 // LsServerMo represents structure for lsServer class
 // used in configConfMo by ConfigConfMo call
 type LsServerMo struct {
-	XMLName xml.Name
+	XMLName  xml.Name
 	LsServer LsServer `xml:"lsServer"`
 }
 
 // MemoryQual represents structure for memoryQual class
 // returned in OutConfigs by ConfigResolveChildren call
 type MemoryQual struct {
-	XMLName xml.Name
-	Memory struct {
-		Clock   string `xml:"clock,attr,omitempty"`
-		Dn      string `xml:"dn,attr,omitempty"`
-		Latency string `xml:"latency,attr,omitempty"`
-		MaxCap  string `xml:"maxCap,attr,omitempty"`
-		MinCap  string `xml:"minCap,attr,omitempty"`
-		Speed   string `xml:"speed,attr,omitempty"`
-		Units   string `xml:"units,attr,omitempty"`
-		Width   string `xml:"width,attr,omitempty"`
-	} `xml:"memoryQual"`
+	XMLName xml.Name `xml:"memoryQual"`
+	Memory  Memory   `xml:"memory"`
+}
+
+type Memory struct {
+	Clock   string `xml:"clock,attr,omitempty"`
+	Dn      string `xml:"dn,attr,omitempty"`
+	Latency string `xml:"latency,attr,omitempty"`
+	MaxCap  string `xml:"maxCap,attr,omitempty"`
+	MinCap  string `xml:"minCap,attr,omitempty"`
+	Speed   string `xml:"speed,attr,omitempty"`
+	Units   string `xml:"units,attr,omitempty"`
+	Width   string `xml:"width,attr,omitempty"`
 }
 
 // ProcessorQual represents structure for processorQual class
 // returned in OutConfigs by ConfigResolveChildren call
 type ProcessorQual struct {
-	XMLName xml.Name
-	Processor struct {
-		Arch       string `xml:"arch,attr,omitempty"`
-		Dn         string `xml:"dn,attr,omitempty"`
-		MaxCores   string `xml:"maxCores,attr,omitempty"`
-		MaxProcs   string `xml:"maxProcs,attr,omitempty"`
-		MaxThreads string `xml:"maxThreads,attr,omitempty"`
-		MinCores   string `xml:"minCores,attr,omitempty"`
-		MinProcs   string `xml:"minProcs,attr,omitempty"`
-		MinThreads string `xml:"minThreads,attr,omitempty"`
-		Model      string `xml:"model,attr,omitempty"`
-		Speed      string `xml:"speed,attr,omitempty"`
-		Stepping   string `xml:"stepping,attr,omitempty"`
-	} `xml:"processorQual"`
+	XMLName   xml.Name `xml:"processorQual"`
+	Processor Processor
+}
+
+type Processor struct {
+	Arch       string `xml:"arch,attr,omitempty"`
+	Dn         string `xml:"dn,attr,omitempty"`
+	MaxCores   string `xml:"maxCores,attr,omitempty"`
+	MaxProcs   string `xml:"maxProcs,attr,omitempty"`
+	MaxThreads string `xml:"maxThreads,attr,omitempty"`
+	MinCores   string `xml:"minCores,attr,omitempty"`
+	MinProcs   string `xml:"minProcs,attr,omitempty"`
+	MinThreads string `xml:"minThreads,attr,omitempty"`
+	Model      string `xml:"model,attr,omitempty"`
+	Speed      string `xml:"speed,attr,omitempty"`
+	Stepping   string `xml:"stepping,attr,omitempty"`
 }
 
 // ComputePhysicalQual represents structure for computePhysicalQual class
 // returned in OutConfigs by ConfigResolveChildren call
 type ComputePhysicalQual struct {
-	XMLName xml.Name
-	Physical struct {
-		Dn      string `xml:"dn,attr,omitempty"`
-		Model   string `xml:"model,attr,omitempty"`
-		PropAcl string `xml:"propAcl,attr,omitempty"`
-	} `xml:"computePhysicalQual"`
+	XMLName  xml.Name `xml:"computePhysicalQual"`
+	Physical Physical
+}
+
+type Physical struct {
+	Dn      string `xml:"dn,attr,omitempty"`
+	Model   string `xml:"model,attr,omitempty"`
+	PropACL string `xml:"propAcl,attr,omitempty"`
 }
 
 // VnicsEither is used to obtain Ether vnics via ConfigResolveChildren call
 type VnicsEther struct {
 	XMLName xml.Name
-	Vnics []VnicEther `xml:"vnicEther"`
+	Vnics   []VnicEther `xml:"vnicEther"`
 }
 
 // VnicEther represents structure for vnicEther class
@@ -1055,7 +1061,7 @@ type VnicEther struct {
 	ConfigQualifier          string `xml:"configQualifier,attr,omitempty"`
 	ConfigState              string `xml:"configState,attr,omitempty"`
 	Dn                       string `xml:"dn,attr,omitempty"`
-	DynamicId                string `xml:"dynamicId,attr,omitempty"`
+	DynamicID                string `xml:"dynamicId,attr,omitempty"`
 	EquipmentDn              string `xml:"equipmentDn,attr,omitempty"`
 	FltAggr                  string `xml:"fltAggr,attr,omitempty"`
 	IdentPoolName            string `xml:"identPoolName,attr,omitempty"`
@@ -1080,42 +1086,42 @@ type VnicEther struct {
 	Owner                    string `xml:"owner,attr,omitempty"`
 	PfDn                     string `xml:"pfDn,attr,omitempty"`
 	PinToGroupName           string `xml:"pinToGroupName,attr,omitempty"`
-	PropAcl                  string `xml:"propAcl,attr,omitempty"`
+	PropACL                  string `xml:"propAcl,attr,omitempty"`
 	Purpose                  string `xml:"purpose,attr,omitempty"`
 	QosPolicyName            string `xml:"qosPolicyName,attr,omitempty"`
 	RedundancyPairType       string `xml:"redundancyPairType,attr,omitempty"`
 	RedundancyPeer           string `xml:"redundancyPeer,attr,omitempty"`
 	StatsPolicyName          string `xml:"statsPolicyName,attr,omitempty"`
-	SwitchId                 string `xml:"switchId,attr,omitempty"`
+	SwitchID                 string `xml:"switchId,attr,omitempty"`
 	Type                     string `xml:"type,attr,omitempty"`
 	VirtualizationPreference string `xml:"virtualizationPreference,attr,omitempty"`
 }
 
 // VnicIPv4IscsiAddr represents nested structure inside of VnicIPv4If
 type VnicIPv4IscsiAddr struct {
-	XMLName xml.Name
+	XMLName     xml.Name
 	Addr        string `xml:"addr,attr,omitempty"`
 	ChildAction string `xml:"childAction,attr,omitempty"`
 	DefGw       string `xml:"defGw,attr,omitempty"`
-	PrimDns     string `xml:"primDns,attr,omitempty"`
+	PrimDNS     string `xml:"primDns,attr,omitempty"`
 	Rn          string `xml:"rn,attr,omitempty"`
-	SecDns      string `xml:"secDns,attr,omitempty"`
+	SecDNS      string `xml:"secDns,attr,omitempty"`
 	Subnet      string `xml:"subnet,attr,omitempty"`
 }
 
 // VnicIPv4Dhcp represents nested structure inside of VnicIPv4If
 type VnicIPv4Dhcp struct {
 	XMLName xml.Name
-	Addr   string `xml:"addr,attr,omitempty"`
-	DefGw  string `xml:"defGw,attr,omitempty"`
-	Dn     string `xml:"dn,attr,omitempty"`
-	Status string `xml:"status,attr,omitempty"`
-	Subnet string `xml:"subnet,attr,omitempty"`
+	Addr    string `xml:"addr,attr,omitempty"`
+	DefGw   string `xml:"defGw,attr,omitempty"`
+	Dn      string `xml:"dn,attr,omitempty"`
+	Status  string `xml:"status,attr,omitempty"`
+	Subnet  string `xml:"subnet,attr,omitempty"`
 }
 
 // VnicIPv4If represents nested structure inside of VnicVlan
 type VnicIPv4If struct {
-	XMLName xml.Name
+	XMLName             xml.Name
 	Addr                string            `xml:"addr,attr,omitempty"`
 	ChildAction         string            `xml:"childAction,attr,omitempty"`
 	ConfigQualifier     string            `xml:"configQualifier,attr,omitempty"`
@@ -1126,11 +1132,11 @@ type VnicIPv4If struct {
 	OperVnetDn          string            `xml:"operVnetDn,attr,omitempty"`
 	OperVnetName        string            `xml:"operVnetName,attr,omitempty"`
 	Owner               string            `xml:"owner,attr,omitempty"`
-	PropAcl             string            `xml:"propAcl,attr,omitempty"`
-	PubNwId             string            `xml:"pubNwId,attr,omitempty"`
+	PropACL             string            `xml:"propAcl,attr,omitempty"`
+	PubNwID             string            `xml:"pubNwId,attr,omitempty"`
 	Rn                  string            `xml:"rn,attr,omitempty"`
 	Sharing             string            `xml:"sharing,attr,omitempty"`
-	SwitchId            string            `xml:"switchId,attr,omitempty"`
+	SwitchID            string            `xml:"switchId,attr,omitempty"`
 	Type                string            `xml:"type,attr,omitempty"`
 	VnicIPv4IscsiAddr   VnicIPv4IscsiAddr `xml:"vnicIPv4IscsiAddr"`
 	VnicIPv4Dhcp        VnicIPv4Dhcp      `xml:"vnicIPv4Dhcp,omitempty"`
@@ -1138,24 +1144,24 @@ type VnicIPv4If struct {
 
 // VnicLun represents nested structure inside of VnicIScsiStaticTargetIf
 type VnicLun struct {
-	XMLName xml.Name
+	XMLName     xml.Name
 	Bootable    string `xml:"bootable,attr,omitempty"`
 	ChildAction string `xml:"childAction,attr,omitempty"`
-	Id          string `xml:"id,attr,omitempty"`
+	ID          string `xml:"id,attr,omitempty"`
 	Rn          string `xml:"rn,attr,omitempty"`
 }
 
 // VnicIScsiStaticTargetIf represents nested structure inside of VnicVlan
 type VnicIScsiStaticTargetIf struct {
-	XMLName xml.Name
+	XMLName             xml.Name
 	AuthProfileName     string    `xml:"authProfileName,attr,omitempty"`
 	ChildAction         string    `xml:"childAction,attr,omitempty"`
-	IpAddress           string    `xml:"ipAddress,attr,omitempty"`
+	IPAddress           string    `xml:"ipAddress,attr,omitempty"`
 	Name                string    `xml:"name,attr,omitempty"`
 	OperAuthProfileName string    `xml:"operAuthProfileName,attr,omitempty"`
 	Port                string    `xml:"port,attr,omitempty"`
 	Priority            string    `xml:"priority,attr,omitempty"`
-	PropAcl             string    `xml:"propAcl,attr,omitempty"`
+	PropACL             string    `xml:"propAcl,attr,omitempty"`
 	Rn                  string    `xml:"rn,attr,omitempty"`
 	Status              string    `xml:"status,attr,omitempty"`
 	VnicLuns            []VnicLun `xml:"vnicLun,omitempty"`
@@ -1163,93 +1169,93 @@ type VnicIScsiStaticTargetIf struct {
 
 // VnicVlan represents nested structure inside of VnicIScsi
 type VnicVlan struct {
-	XMLName xml.Name
-	ChildAction              string                    `xml:"childAction,attr,omitempty"`
-	ConfigQualifier          string                    `xml:"configQualifier,attr,omitempty"`
-	FltAggr                  string                    `xml:"fltAggr,attr,omitempty"`
-	Name                     string                    `xml:"name,attr,omitempty"`
-	OperPrimaryVnetDn        string                    `xml:"operPrimaryVnetDn,attr,omitempty"`
-	OperPrimaryVnetName      string                    `xml:"operPrimaryVnetName,attr,omitempty"`
-	OperState                string                    `xml:"operState,attr,omitempty"`
-	OperVnetDn               string                    `xml:"operVnetDn,attr,omitempty"`
-	OperVnetName             string                    `xml:"operVnetName,attr,omitempty"`
-	Owner                    string                    `xml:"owner,attr,omitempty"`
-	PubNwId                  string                    `xml:"pubNwId,attr,omitempty"`
-	Rn                       string                    `xml:"rn,attr,omitempty"`
-	Sharing                  string                    `xml:"sharing,attr,omitempty"`
-	SwitchId                 string                    `xml:"switchId,attr,omitempty"`
-	Type                     string                    `xml:"type,attr,omitempty"`
-	VlanName                 string                    `xml:"vlanName,attr,omitempty"`
-	Vnet                     string                    `xml:"vnet,attr,omitempty"`
-	VnicIPv4If               VnicIPv4If                `xml:"vnicIPv4If"`
-	VnicIScsiStaticTargets   []VnicIScsiStaticTargetIf `xml:"vnicIScsiStaticTargetIf"`
+	XMLName                xml.Name
+	ChildAction            string                    `xml:"childAction,attr,omitempty"`
+	ConfigQualifier        string                    `xml:"configQualifier,attr,omitempty"`
+	FltAggr                string                    `xml:"fltAggr,attr,omitempty"`
+	Name                   string                    `xml:"name,attr,omitempty"`
+	OperPrimaryVnetDn      string                    `xml:"operPrimaryVnetDn,attr,omitempty"`
+	OperPrimaryVnetName    string                    `xml:"operPrimaryVnetName,attr,omitempty"`
+	OperState              string                    `xml:"operState,attr,omitempty"`
+	OperVnetDn             string                    `xml:"operVnetDn,attr,omitempty"`
+	OperVnetName           string                    `xml:"operVnetName,attr,omitempty"`
+	Owner                  string                    `xml:"owner,attr,omitempty"`
+	PubNwID                string                    `xml:"pubNwId,attr,omitempty"`
+	Rn                     string                    `xml:"rn,attr,omitempty"`
+	Sharing                string                    `xml:"sharing,attr,omitempty"`
+	SwitchID               string                    `xml:"switchId,attr,omitempty"`
+	Type                   string                    `xml:"type,attr,omitempty"`
+	VlanName               string                    `xml:"vlanName,attr,omitempty"`
+	Vnet                   string                    `xml:"vnet,attr,omitempty"`
+	VnicIPv4If             VnicIPv4If                `xml:"vnicIPv4If"`
+	VnicIScsiStaticTargets []VnicIScsiStaticTargetIf `xml:"vnicIScsiStaticTargetIf"`
 }
 
 // VnicIScsi represents structure for vnicIScsi class
 // returned in OutConfigs by ConfigResolveChildren call and
 // used in InCounfigs by ConfigConfMos call to set iSCSI interfaces
 type VnicIScsi struct {
-	XMLName                xml.Name  `xml:"vnicIScsi"`
-	AdaptorProfileName     string    `xml:"adaptorProfileName,attr,omitempty"`
-	Addr                   string    `xml:"addr,attr,omitempty"`
-	AdminCdnName           string    `xml:"adminCdnName,attr,omitempty"`
-	AdminHostPort          string    `xml:"adminHostPort,attr,omitempty"`
-	AdminVcon              string    `xml:"adminVcon,attr,omitempty"`
-	AuthProfileName        string    `xml:"authProfileName,attr,omitempty"`
-	BootDev                string    `xml:"bootDev,attr,omitempty"`
-	CdnPropInSync          string    `xml:"cdnPropInSync,attr,omitempty"`
-	CdnSource              string    `xml:"cdnSource,attr,omitempty"`
-	ChildAction            string    `xml:"childAction,attr,omitempty"`
-	ConfigQualifier        string    `xml:"configQualifier,attr,omitempty"`
-	ConfigState            string    `xml:"configState,attr,omitempty"`
-	Dn                     string    `xml:"dn,attr,omitempty"`
-	EquipmentDn            string    `xml:"equipmentDn,attr,omitempty"`
-	EthEpDn                string    `xml:"ethEpDn,attr,omitempty"`
-	ExtIPState             string    `xml:"extIPState,attr,omitempty"`
-	FltAggr                string    `xml:"fltAggr,attr,omitempty"`
-	IdentPoolName          string    `xml:"identPoolName,attr,omitempty"`
-	InitNameSuffix         string    `xml:"initNameSuffix,attr,omitempty"`
-	InitiatorName          string    `xml:"initiatorName,attr,omitempty"`
-	InstType               string    `xml:"instType,attr,omitempty"`
-	IqnIdentPoolName       string    `xml:"iqnIdentPoolName,attr,omitempty"`
-	Name                   string    `xml:"name,attr,omitempty"`
-	NwTemplName            string    `xml:"nwTemplName,attr,omitempty"`
-	OperAdaptorProfileName string    `xml:"operAdaptorProfileName,attr,omitempty"`
-	OperAuthProfileName    string    `xml:"operAuthProfileName,attr,omitempty"`
-	OperCdnName            string    `xml:"operCdnName,attr,omitempty"`
-	OperHostPort           string    `xml:"operHostPort,attr,omitempty"`
-	OperIdentPoolName      string    `xml:"operIdentPoolName,attr,omitempty"`
-	OperIqnIdentPoolName   string    `xml:"operIqnIdentPoolName,attr,omitempty"`
-	OperOrder              string    `xml:"operOrder,attr,omitempty"`
-	OperSpeed              string    `xml:"operSpeed,attr,omitempty"`
-	OperStatsPolicyName    string    `xml:"operStatsPolicyName,attr,omitempty"`
-	OperVcon               string    `xml:"operVcon,attr,omitempty"`
-	Order                  string    `xml:"order,attr,omitempty"`
-	Owner                  string    `xml:"owner,attr,omitempty"`
-	PinToGroupName         string    `xml:"pinToGroupName,attr,omitempty"`
-	PropAcl                string    `xml:"propAcl,attr,omitempty"`
-	QosPolicyName          string    `xml:"qosPolicyName,attr,omitempty"`
-	RedundancyPairType     string    `xml:"redundancyPairType,attr,omitempty"`
-	RedundancyPeer         string    `xml:"redundancyPeer,attr,omitempty"`
-	StatsPolicyName        string    `xml:"statsPolicyName,attr,omitempty"`
-	SwitchId               string    `xml:"switchId,attr,omitempty"`
-	Type                   string    `xml:"type,attr,omitempty"`
-	VnicDefType            string    `xml:"vnicDefType,attr,omitempty"`
-	VnicName               string    `xml:"vnicName,attr,omitempty"`
-	VnicVlan               VnicVlan  `xml:"vnicVlan"`
+	XMLName                xml.Name `xml:"vnicIScsi"`
+	AdaptorProfileName     string   `xml:"adaptorProfileName,attr,omitempty"`
+	Addr                   string   `xml:"addr,attr,omitempty"`
+	AdminCdnName           string   `xml:"adminCdnName,attr,omitempty"`
+	AdminHostPort          string   `xml:"adminHostPort,attr,omitempty"`
+	AdminVcon              string   `xml:"adminVcon,attr,omitempty"`
+	AuthProfileName        string   `xml:"authProfileName,attr,omitempty"`
+	BootDev                string   `xml:"bootDev,attr,omitempty"`
+	CdnPropInSync          string   `xml:"cdnPropInSync,attr,omitempty"`
+	CdnSource              string   `xml:"cdnSource,attr,omitempty"`
+	ChildAction            string   `xml:"childAction,attr,omitempty"`
+	ConfigQualifier        string   `xml:"configQualifier,attr,omitempty"`
+	ConfigState            string   `xml:"configState,attr,omitempty"`
+	Dn                     string   `xml:"dn,attr,omitempty"`
+	EquipmentDn            string   `xml:"equipmentDn,attr,omitempty"`
+	EthEpDn                string   `xml:"ethEpDn,attr,omitempty"`
+	ExtIPState             string   `xml:"extIPState,attr,omitempty"`
+	FltAggr                string   `xml:"fltAggr,attr,omitempty"`
+	IdentPoolName          string   `xml:"identPoolName,attr,omitempty"`
+	InitNameSuffix         string   `xml:"initNameSuffix,attr,omitempty"`
+	InitiatorName          string   `xml:"initiatorName,attr,omitempty"`
+	InstType               string   `xml:"instType,attr,omitempty"`
+	IqnIdentPoolName       string   `xml:"iqnIdentPoolName,attr,omitempty"`
+	Name                   string   `xml:"name,attr,omitempty"`
+	NwTemplName            string   `xml:"nwTemplName,attr,omitempty"`
+	OperAdaptorProfileName string   `xml:"operAdaptorProfileName,attr,omitempty"`
+	OperAuthProfileName    string   `xml:"operAuthProfileName,attr,omitempty"`
+	OperCdnName            string   `xml:"operCdnName,attr,omitempty"`
+	OperHostPort           string   `xml:"operHostPort,attr,omitempty"`
+	OperIdentPoolName      string   `xml:"operIdentPoolName,attr,omitempty"`
+	OperIqnIdentPoolName   string   `xml:"operIqnIdentPoolName,attr,omitempty"`
+	OperOrder              string   `xml:"operOrder,attr,omitempty"`
+	OperSpeed              string   `xml:"operSpeed,attr,omitempty"`
+	OperStatsPolicyName    string   `xml:"operStatsPolicyName,attr,omitempty"`
+	OperVcon               string   `xml:"operVcon,attr,omitempty"`
+	Order                  string   `xml:"order,attr,omitempty"`
+	Owner                  string   `xml:"owner,attr,omitempty"`
+	PinToGroupName         string   `xml:"pinToGroupName,attr,omitempty"`
+	PropACL                string   `xml:"propAcl,attr,omitempty"`
+	QosPolicyName          string   `xml:"qosPolicyName,attr,omitempty"`
+	RedundancyPairType     string   `xml:"redundancyPairType,attr,omitempty"`
+	RedundancyPeer         string   `xml:"redundancyPeer,attr,omitempty"`
+	StatsPolicyName        string   `xml:"statsPolicyName,attr,omitempty"`
+	SwitchID               string   `xml:"switchId,attr,omitempty"`
+	Type                   string   `xml:"type,attr,omitempty"`
+	VnicDefType            string   `xml:"vnicDefType,attr,omitempty"`
+	VnicName               string   `xml:"vnicName,attr,omitempty"`
+	VnicVlan               VnicVlan `xml:"vnicVlan"`
 }
 
 // VnicsIScsi is used to obtain iSCSI vnics via ConfigResolveChildren call
 type VnicsIScsi struct {
 	XMLName xml.Name
-	Vnics []VnicIScsi `xml:"vnicIScsi"`
+	Vnics   []VnicIScsi `xml:"vnicIScsi"`
 }
 
-// VnicsIScsiPair representes structure submitted in InConfigs
+// VnicsIScsiPair represents structure submitted in InConfigs
 // for ConfigConfMos call to set iSCSI interfaces
 type VnicIScsiPair struct {
-	XMLName xml.Name
-	Key        string     `xml:"key,attr"`
+	XMLName   xml.Name
+	Key       string `xml:"key,attr"`
 	VnicIScsi VnicIScsi
 }
 
@@ -1257,5 +1263,5 @@ type VnicIScsiPair struct {
 // ConfigConfMos result retrieved in OutConfigs
 type VnicIScsiPairs struct {
 	XMLName xml.Name
-        Pairs   []VnicIScsiPair `xml:"pair"`
+	Pairs   []VnicIScsiPair `xml:"pair"`
 }

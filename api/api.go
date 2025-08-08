@@ -60,7 +60,7 @@ type AaaLoginResponse struct {
 	OutEvtChannel    string   `xml:"outEvtChannel,attr,omitempty"`
 	OutName          string   `xml:"outName,attr,omitempty"`
 	OutVersion       string   `xml:"outVersion,attr,omitempty"`
-	OutSessionId     string   `xml:"outSessionId,attr,omitempty"`
+	OutSessionID     string   `xml:"outSessionId,attr,omitempty"`
 }
 
 // AaaRefreshRequest type is used for sending a request to the remote API endpoint for
@@ -122,7 +122,7 @@ type ConfigResolveDnResponse struct {
 	BaseResponse
 	XMLName   xml.Name `xml:"configResolveDn"`
 	Dn        string   `xml:"dn,attr"`
-	OutConfig InnerXml `xml:"outConfig"`
+	OutConfig InnerXML `xml:"outConfig"`
 }
 
 // Dn represents a single managed object DN.
@@ -133,26 +133,26 @@ type Dn struct {
 
 // ConfigResolveDnsRequest type is used for constructing requests that retrieve
 // managed objects for a list of given DNs.
-type ConfigResolveDnsRequest struct {
+type ConfigResolveDNSRequest struct {
 	XMLName        xml.Name `xml:"configResolveDns"`
 	Cookie         string   `xml:"cookie,attr"`
 	InHierarchical string   `xml:"inHierarchical,attr,omitempty"`
-	InDns          []Dn     `xml:"inDns>dn"`
+	InDNS          []Dn     `xml:"inDns>dn"`
 }
 
 // ConfigResolveDnsResponse is the response type associated with a ConfigResolveDnsRequest.
 // The managed objects within OutConfigs field should be xml.Unmarshal'ed.
-type ConfigResolveDnsResponse struct {
+type ConfigResolveDNSResponse struct {
 	BaseResponse
 	XMLName       xml.Name `xml:"configResolveDns"`
 	OutUnresolved []Dn     `xml:"outUnresolved>dn"`
-	OutConfigs    InnerXml `xml:"outConfigs"`
+	OutConfigs    InnerXML `xml:"outConfigs"`
 }
 
 // InnerXml represents a generic configuration retrieved by the various query methods.
 // After a successful result from a query method a client should unmarshal the data
 // contained within an InnerXml to the specific managed object.
-type InnerXml struct {
+type InnerXML struct {
 	XMLName xml.Name
 	Inner   []byte `xml:",innerxml"`
 }
@@ -162,7 +162,7 @@ type InnerXml struct {
 type ConfigResolveClassRequest struct {
 	XMLName        xml.Name  `xml:"configResolveClass"`
 	Cookie         string    `xml:"cookie,attr"`
-	ClassId        string    `xml:"classId,attr"`
+	ClassID        string    `xml:"classId,attr"`
 	InHierarchical string    `xml:"inHierarchical,attr,omitempty"`
 	InFilter       FilterAny `xml:"inFilter>any,omitempty"`
 }
@@ -172,11 +172,11 @@ type ConfigResolveClassRequest struct {
 type ConfigResolveClassResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"configResolveClass"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // Id represents an ID of a class.
-type Id struct {
+type ID struct {
 	XMLName xml.Name `xml:"Id"`
 	Value   string   `xml:"value,attr"`
 }
@@ -197,14 +197,14 @@ type ConfigResolveClassesRequest struct {
 	XMLName        xml.Name `xml:"configResolveClasses"`
 	Cookie         string   `xml:"cookie,attr"`
 	InHierarchical string   `xml:"inHierarchical,attr,omitempty"`
-	InIds          []Id     `xml:"inIds>Id"`
+	InIDs          []ID     `xml:"inIds>Id"`
 }
 
 // ConfigResolveClassesResponse is the response type associated with a ConfigResolveClassesRequest.
 type ConfigResolveClassesResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"configResolveClasses"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // ConfigResolveChildren type is used for constructing requests that retrieve
@@ -213,7 +213,7 @@ type ConfigResolveClassesResponse struct {
 type ConfigResolveChildrenRequest struct {
 	XMLName        xml.Name  `xml:"configResolveChildren"`
 	Cookie         string    `xml:"cookie,attr"`
-	ClassId        string    `xml:"classId,attr"`
+	ClassID        string    `xml:"classId,attr"`
 	InDn           string    `xml:"inDn,attr,omitempty"`
 	InHierarchical string    `xml:"inHierarchical,attr"`
 	InFilter       FilterAny `xml:"inFilter>any,omitempty"`
@@ -223,7 +223,7 @@ type ConfigResolveChildrenRequest struct {
 type ConfigResolveChildrenResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"configResolveChildren"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // OrgResolveElements type is used for constructing requests that retrieves
@@ -240,11 +240,11 @@ type OrgResolveElementsRequest struct {
 
 // OrgResolveElementsResponse is the type associated with a OrgResolveElementsRequest.
 // Specific elements contained within OutConfigs should be xml.Unmarshal'ed first.
-// See mo.LsServerPair as an example.
+// See models.LsServerPair as an example.
 type OrgResolveElementsResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"orgResolveElements"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // ConfigConfMoRequest type is used for constructing request
@@ -261,7 +261,7 @@ type ConfigConfMoRequest struct {
 type ConfigConfMoResponse struct {
 	BaseResponse
 	XMLName   xml.Name `xml:"configConfMo"`
-	OutConfig InnerXml `xml:"outConfig"`
+	OutConfig InnerXML `xml:"outConfig"`
 }
 
 // ConfigConfMosRequest type is used for constructing request
@@ -277,7 +277,7 @@ type ConfigConfMosRequest struct {
 type ConfigConfMosResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"configConfMos"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // ConfigEstimateImpact type is used for constructing request configEstimateImpact
@@ -291,7 +291,7 @@ type ConfigEstimateImpactRequest struct {
 type ConfigEstimateImpactResponse struct {
 	BaseResponse
 	XMLName     xml.Name `xml:"configEstimateImpact"`
-	OutAffected InnerXml `xml:"outAffected"`
+	OutAffected InnerXML `xml:"outAffected"`
 }
 
 // LsInstantiateNTemplateRequest type is used to instantiate service profile from service profile template
@@ -309,7 +309,7 @@ type LsInstantiateNTemplateRequest struct {
 type LsInstantiateNTemplateResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"lsInstantiateNTemplate"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // LsInstantiateNNamedTemplateRequest type is used to instantiate service profile from service profile template
@@ -326,11 +326,11 @@ type LsInstantiateNNamedTemplateRequest struct {
 type LsInstantiateNNamedTemplateResponse struct {
 	BaseResponse
 	XMLName    xml.Name `xml:"lsInstantiateNNamedTemplate"`
-	OutConfigs InnerXml `xml:"outConfigs"`
+	OutConfigs InnerXML `xml:"outConfigs"`
 }
 
 // FilterAny represents any valid filter.
-type FilterAny interface{}
+type FilterAny any
 
 // FilterProperty represents a Property Filter.
 type FilterProperty struct {

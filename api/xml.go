@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/xml"
+	"fmt"
 	"regexp"
 )
 
@@ -23,7 +24,7 @@ import (
 // As of now XML marshaling in Go always uses start and end tags,
 // which results in XML elements like the one below.
 //
-//    <Person name="me"></Person>
+//	<Person name="me"></Person>
 //
 // Above XML elements cannot be parsed by the remote Cisco UCS API endpoint,
 // and such API calls result in parse error returned to the client.
@@ -41,10 +42,10 @@ import (
 // hopefully one day make into the language as a feature.
 //
 // https://groups.google.com/forum/#!topic/golang-nuts/guG6iOCRu08
-func xmlMarshalWithSelfClosingTags(in interface{}) ([]byte, error) {
+func xmlMarshalWithSelfClosingTags(in any) ([]byte, error) {
 	data, err := xml.Marshal(in)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to marshal: %w", err)
 	}
 	re := regexp.MustCompile(`<([^/][\w\s\"\=\-\/\^\*\+\.\(\)\[\]\|\?\$]*)>\s*<(\/\w*)>`)
 	newData := re.ReplaceAllString(string(data), "<$1/>")

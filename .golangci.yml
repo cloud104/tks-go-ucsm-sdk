@@ -1,0 +1,148 @@
+version: "2"
+
+run:
+  allow-parallel-runners: true
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+
+linters:
+  default: none
+  enable:
+    - dupl
+    - errcheck
+    - forbidigo
+    - ginkgolinter
+    - goconst
+    - gocyclo
+    - govet
+    - importas
+    - ineffassign
+    - misspell
+    - nakedret
+    - nolintlint
+    - prealloc
+    - revive
+    - staticcheck
+    - unconvert
+    - unparam
+    - unused
+    - wrapcheck
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+    rules:
+      - linters:
+          - dupl
+        path: internal/*
+      - linters:
+          - errcheck
+        path: _test\.go
+  settings:
+    errcheck:
+      check-blank: true
+      check-type-assertions: true
+      disable-default-exclusions: true
+      exclude-functions:
+        - "fmt.Printf"
+        - "fmt.Sprintf"
+        - "fmt.Println"
+
+    forbidigo:
+      forbid:
+        - msg: the logger should be obtained using 'FromContext' instead of being used directly.
+          pattern: ^klog\.(V|Info|Error)(Depth|ln|lnDepth|f|fDepth|S|SDepth)?$
+        - msg: Use a proper logger instead of fmt.Print*
+          pattern: ^fmt\.Print.*$
+    importas:
+      alias:
+        - alias: $1$2
+          pkg: k8s.io/apimachinery/pkg/apis/(\w+)/(v[\w\d]+)
+        - alias: $1$2
+          pkg: k8s.io/api/(\w+)/(v[\w\d]+)
+        - alias: xp$1
+          pkg: github.com/crossplane/crossplane-runtime/apis/common/(v[\w\d]+)
+    revive:
+      enable-all-rules: true
+      rules:
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#add-constant
+        - disabled: true
+          name: add-constant
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#package-comments
+        - disabled: true
+          name: package-comments
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#exported
+        - disabled: true
+          name: exported
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#line-length-limit
+        - disabled: true
+          name: line-length-limit
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#cognitive-complexity
+        - exclude:
+            - TEST
+          name: cognitive-complexity
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#max-public-structs
+        - disabled: true
+          name: max-public-structs
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#unused-receiver
+        - disabled: true
+          name: unused-receiver
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#cyclomatic
+        - arguments:
+            - 10
+          disabled: true
+          name: cyclomatic
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#cognitive-complexity
+        - arguments:
+            - 7
+          disabled: true
+          name: cognitive-complexity
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#function-length
+        - disabled: true
+          name: function-length
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#struct-tag
+        - arguments:
+            - json,inline
+          name: struct-tag
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#dot-imports
+        - arguments:
+            - allowed-packages:
+                - github.com/onsi/ginkgo/v2
+                - github.com/onsi/gomega
+          name: dot-imports
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#redundant-import-alias
+        - name: redundant-import-alias
+          disabled: true
+        # https://github.com/mgechev/revive/blob/HEAD/RULES_DESCRIPTIONS.md#unhandled-error
+        - name: unhandled-error
+          severity: warning
+          disabled: false
+          exclude: [""]
+          arguments:
+            - "^fmt.Printf"
+    staticcheck:
+      checks:
+        - -S1016
+    wrapcheck:
+#      ignore-package-globs:
+#        - github.com/angelokurtis/reconciler/*
+#        - github.com/cloud104/tks-operator/*
+      ignore-sig-regexps:
+        - ^func \(\*sigs\.k8s\.io/controller-runtime/pkg/builder\.TypedBuilder\[.*]\)+\.Complete\([^ ]+ sigs\.k8s\.io/controller-runtime/pkg/reconcile\.TypedReconciler\[.*]\) error$
+        - ^func \(sigs\.k8s\.io/controller-runtime/pkg/reconcile\.ObjectReconciler\[.*]\)+\.Reconcile\(context\.Context, .*\) \(sigs\.k8s\.io/controller-runtime/pkg/reconcile\.Result, error\)$
+      ignore-sigs:
+        - func (net/http.RoundTripper).RoundTrip(*net/http.Request) (*net/http.Response, error)
+        - func errors.New(text string) error
+        - func fmt.Errorf(format string, a ...any) error
+        - func sigs.k8s.io/controller-runtime/pkg/client.IgnoreNotFound(err error) error

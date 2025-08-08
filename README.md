@@ -32,8 +32,8 @@ See Cisco UCS Manager XML API Programmer's Guide at https://www.cisco.com/c/en/u
 
 In order to install `go-ucsm-sdk` execute the following command:
 
-```
-go get -v github.com/ifeoktistov/go-ucsm-sdk
+```bash
+   go get -v github.com/cloud104/tks-go-ucsm-sdk
 ```
 
 ## Tests
@@ -44,6 +44,9 @@ TBD
 
 ## Examples
 
-Check the included examples from this repository.
+Check the included docs/examples from this repository.
+
+[server-get](docs/exemples/server-get_example.md) is a good starting point to see how to use the library.
+
 
 Please note that most of the examples are using high-level utility calls to abstart a caller from XML API.
