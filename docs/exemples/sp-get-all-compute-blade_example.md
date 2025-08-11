@@ -5,16 +5,16 @@ import (
 	"log/slog"
 	"os"
 
-	ucsm "github.com/cloud104/tks-go-ucsm-sdk/internal"
+	ucsm "github.com/cloud104/tks-go-ucsm-sdk/pkg"
 )
 
 func main() {
 	handler := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 		Level: slog.LevelDebug}))
 	slog.SetDefault(handler)
-	endPoint := "https://10.107.34.138"
-	username := "maas"
-	password := "Totvs@123!"
+	endPoint := "https://ucsm01.example.com/"
+	username := "admin"
+	password := "secret"
 	client, err := ucsm.AaaLogin(endPoint, username, password)
 	client.SetDebug(false)
 	if err != nil {
