@@ -1,3 +1,4 @@
+```yaml
 package main
 
 import (
@@ -28,3 +29,4 @@ func main() {
 		}
 	}
 }
+```
