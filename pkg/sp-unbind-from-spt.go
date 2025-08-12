@@ -18,7 +18,7 @@ type LsServerUnbindMo struct {
 	LsServer LsServerUnbind `xml:"lsServer"`
 }
 
-func SpUnbindFromSpt(c *api.Client, spDn string) (lsServer *mo.LsServer, err error) {
+func SpUnbindFromSpt(c *api.Client, spDn string) (*mo.LsServer, error) {
 	var out mo.LsServerMo
 	lsServerMo := LsServerUnbindMo{
 		LsServer: LsServerUnbind{
@@ -31,8 +31,8 @@ func SpUnbindFromSpt(c *api.Client, spDn string) (lsServer *mo.LsServer, err err
 		InHierarchical: "false",
 		InConfig:       lsServerMo,
 	}
-	if err = c.ConfigConfMo(req, &out); err == nil {
-		lsServer = &out.LsServer
+	if err := c.ConfigConfMo(req, &out); err != nil {
+		return nil, fmt.Errorf("failed to unbind server profile from template %s: %w", spDn, err)
 	}
-	return lsServer, fmt.Errorf("failed to unbind server profile from template %s: %w", spDn, err)
+	return &out.LsServer, nil
 }
