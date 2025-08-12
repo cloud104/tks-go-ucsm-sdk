@@ -7,7 +7,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
-func SpGetPowerState(c *api.Client, spDn string) (powerState string, err error) {
+func SpGetPowerState(c *api.Client, spDn string) (string, error) {
 	var out mo.LsPowerMo
 	req := api.ConfigResolveChildrenRequest{
 		Cookie:         c.Cookie,
@@ -15,8 +15,8 @@ func SpGetPowerState(c *api.Client, spDn string) (powerState string, err error) 
 		ClassID:        "lsPower",
 		InHierarchical: "false",
 	}
-	if err = c.ConfigResolveChildren(req, &out); err == nil {
-		powerState = out.LsPower.State
+	if err := c.ConfigResolveChildren(req, &out); err != nil {
+		return "", fmt.Errorf("power state is not available for service profile %s", spDn)
 	}
-	return powerState, fmt.Errorf("failed to resolve power state: %w", err)
+	return out.LsPower.State, nil
 }
