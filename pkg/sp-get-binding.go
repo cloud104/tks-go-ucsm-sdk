@@ -7,7 +7,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
-func SpGetBinding(c *api.Client, spDn string) (lsBinding *mo.LsBinding, err error) {
+func SpGetBinding(c *api.Client, spDn string) (*mo.LsBinding, error) {
 	var out mo.LsBindingMo
 	req := api.ConfigResolveChildrenRequest{
 		Cookie:         c.Cookie,
@@ -15,8 +15,8 @@ func SpGetBinding(c *api.Client, spDn string) (lsBinding *mo.LsBinding, err erro
 		ClassID:        "lsBinding",
 		InHierarchical: "false",
 	}
-	if err = c.ConfigResolveChildren(req, &out); err == nil {
-		lsBinding = &out.LsBinding
+	if err := c.ConfigResolveChildren(req, &out); err != nil {
+		return nil, fmt.Errorf("failed to resolve children classID <lsBinding>: %w", err)
 	}
-	return lsBinding, fmt.Errorf("failed to resolve children: %w", err)
+	return &out.LsBinding, nil
 }
