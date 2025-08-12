@@ -7,7 +7,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
-func SpGetVnicsEther(c *api.Client, spDn string) (vnicsEther *[]mo.VnicEther, err error) {
+func SpGetVnicsEther(c *api.Client, spDn string) (*[]mo.VnicEther, error) {
 	var out mo.VnicsEther
 	req := api.ConfigResolveChildrenRequest{
 		Cookie:         c.Cookie,
@@ -15,8 +15,8 @@ func SpGetVnicsEther(c *api.Client, spDn string) (vnicsEther *[]mo.VnicEther, er
 		ClassID:        "vnicEther",
 		InHierarchical: "true",
 	}
-	if err = c.ConfigResolveChildren(req, &out); err == nil {
-		vnicsEther = &out.Vnics
+	if err := c.ConfigResolveChildren(req, &out); err != nil {
+		return nil, fmt.Errorf("failed to resolve children classID <vnicEther>:  %w", err)
 	}
-	return vnicsEther, fmt.Errorf("failed to resolve children: %w", err)
+	return &out.Vnics, nil
 }
