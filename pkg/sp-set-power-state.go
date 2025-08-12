@@ -7,7 +7,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
-func SpSetPowerState(c *api.Client, spDn string, powerState string) (lsPower *mo.LsPower, err error) {
+func SpSetPowerState(c *api.Client, spDn string, powerState string) (*mo.LsPower, error) {
 	var out mo.LsPowerMo
 	lsPowerMo := mo.LsPowerMo{
 		LsPower: mo.LsPower{
@@ -21,8 +21,8 @@ func SpSetPowerState(c *api.Client, spDn string, powerState string) (lsPower *mo
 		InHierarchical: "false",
 		InConfig:       lsPowerMo,
 	}
-	if err = c.ConfigConfMo(req, &out); err == nil {
-		lsPower = &out.LsPower
+	if err := c.ConfigConfMo(req, &out); err != nil {
+		return nil, fmt.Errorf("failed to resolve powerstate: %w", err)
 	}
-	return lsPower, fmt.Errorf("failed to resolve powerstate: %w", err)
+	return &out.LsPower, nil
 }
