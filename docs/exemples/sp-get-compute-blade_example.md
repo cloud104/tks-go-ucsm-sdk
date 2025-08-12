@@ -1,3 +1,4 @@
+```yaml
 package main
 
 import (
@@ -54,3 +55,4 @@ func main() {
 		fmt.Printf("UserLabel: %s\n", blade.UserLabel)
 	}
 }
+```
