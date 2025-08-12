@@ -33,7 +33,7 @@ func SpSetAttributes(c *api.Client, spDn string, spDescription string, spUserLab
 		InConfig:       lsServerMo,
 	}
 	if err = c.ConfigConfMo(req, &out); err == nil {
-		lsServer = &out.LsServer
+
 	}
-	return lsServer, fmt.Errorf("failed to set attributes for service profile '%s': %w", spDn, err)
+	return &out.LsServer, fmt.Errorf("failed to set attributes for service profile '%s': %w", spDn, err)
 }
