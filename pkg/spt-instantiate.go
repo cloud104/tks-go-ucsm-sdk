@@ -7,7 +7,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/mo"
 )
 
-func SptInstantiate(c *api.Client, sptDn string, spOrg string, spName string) (lsServer *mo.LsServer, err error) {
+func SptInstantiate(c *api.Client, sptDn string, spOrg string, spName string) (*mo.LsServer, error) {
 	var out mo.LsServerMo
 	req := api.LsInstantiateNNamedTemplateRequest{
 		Cookie:      c.Cookie,
@@ -20,10 +20,9 @@ func SptInstantiate(c *api.Client, sptDn string, spOrg string, spName string) (l
 		},
 		InHierarchical: "false",
 	}
-	err = c.LsInstantiateNNamedTemplate(req, &out)
+	err := c.LsInstantiateNNamedTemplate(req, &out)
 	if err != nil {
 		return nil, fmt.Errorf("failed to instantiate named template: %w", err)
 	}
-	lsServer = &out.LsServer
-	return lsServer, nil
+	return &out.LsServer, nil
 }
