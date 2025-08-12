@@ -223,6 +223,7 @@ func ComputeBladeGetAvailable(c *api.Client, bladeSpec *BladeSpec) (computeBlade
 	}
 	if err = c.ConfigResolveClass(req, &out); err == nil {
 		computeBlades = &out.ComputeBlades
+		return &out.ComputeBlades, nil
 	}
-	return computeBlades, fmt.Errorf("failed to resolve compute blades: %w", err)
+	return nil, fmt.Errorf("failed to resolve compute blades: %w", err)
 }
