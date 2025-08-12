@@ -46,6 +46,7 @@ func ServerGet(c *api.Client, dnFilter string, lsType string) (lsServers []*mo.L
 		for _, pair := range out.Pairs {
 			lsServers = append(lsServers, &pair.LsServer)
 		}
+		return lsServers, nil
 	}
-	return lsServers, fmt.Errorf("failed to resolve elements: %w", err)
+	return nil, fmt.Errorf("failed to resolve elements: %w", err)
 }
