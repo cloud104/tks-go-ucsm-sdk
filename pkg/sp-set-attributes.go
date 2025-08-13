@@ -32,8 +32,8 @@ func SpSetAttributes(c *api.Client, spDn string, spDescription string, spUserLab
 		InHierarchical: "false",
 		InConfig:       lsServerMo,
 	}
-	if err = c.ConfigConfMo(req, &out); err == nil {
-
+	if err = c.ConfigConfMo(req, &out); err != nil {
+		return nil, fmt.Errorf("failed to set attributes for service profile '%s': %w", spDn, err)
 	}
-	return &out.LsServer, fmt.Errorf("failed to set attributes for service profile '%s': %w", spDn, err)
+	return &out.LsServer, nil
 }
