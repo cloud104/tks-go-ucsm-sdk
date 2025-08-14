@@ -4,7 +4,7 @@
 
 ### History
 
-This library is a fork from https://github.com/dnaeon/go-ucs
+This library is a fork from https://github.com/igor-feoktistov/go-ucsm-sdk 
 
 ## Documentation
 
@@ -30,7 +30,7 @@ See Cisco UCS Manager XML API Programmer's Guide at https://www.cisco.com/c/en/u
 
 ## Installation
 
-In order to install `go-ucsm-sdk` execute the following command:
+In order to install `tks-go-ucsm-sdk` execute the following command:
 
 ```bash
    go get -v github.com/cloud104/tks-go-ucsm-sdk
