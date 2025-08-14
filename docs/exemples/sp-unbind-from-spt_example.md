@@ -1,3 +1,4 @@
+```go
 package main
 
 import (
@@ -26,3 +27,4 @@ func main() {
 		fmt.Printf("\tSource Template: %s\n", lsServer.SrcTemplName)
 	}
 }
+```

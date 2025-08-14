@@ -1,4 +1,4 @@
-```yaml
+```go
 package main
 
 import (

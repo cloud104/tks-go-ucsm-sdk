@@ -1,3 +1,4 @@
+```go
 package main
 
 import (
@@ -25,3 +26,4 @@ func main() {
 		fmt.Printf("SP association state: %s\n", assocState)
 	}
 }
+```

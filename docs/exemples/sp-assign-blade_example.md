@@ -12,7 +12,7 @@ func main() {
 	username := "admin"
 	password := "secret"
 	spDn := "org-root"
-	pnDn := "org-TPSP1"
+	pnDn := "sys/chassis-1/blade-2"
 	client, err := ucsm.AaaLogin(endPoint, username, password)
 	//client.SetDebug(true)
 	if err != nil {

@@ -1,3 +1,4 @@
+```go
 package main
 
 import (
@@ -50,3 +51,4 @@ func main() {
 		fmt.Printf("\t\tConfig State: %s\n", vnicIscsi.ConfigState)
 	}
 }
+```
