@@ -36,6 +36,9 @@ func TestXmlMarshalWithSelfClosingTags(t *testing.T) {
 			if strings.Contains(got, "></aaaLogin>") {
 				t.Errorf("expected element to be collapsed to self-closing form, got: %s", got)
 			}
+			if strings.Contains(got, "&#34;") || strings.Contains(got, "&#39;") {
+				t.Errorf("expected quote/apostrophe as named entities, got numeric character reference: %s", got)
+			}
 		})
 	}
 }
