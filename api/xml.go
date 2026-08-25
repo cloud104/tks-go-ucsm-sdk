@@ -47,7 +47,12 @@ func xmlMarshalWithSelfClosingTags(in any) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal: %w", err)
 	}
-	re := regexp.MustCompile(`<([^/][\w\s\"\=\-\/\^\*\+\.\(\)\[\]\|\?\$]*)>\s*<(\/\w*)>`)
+	// xml.Marshal always escapes literal '<' and '>' within attribute values, so
+	// any '<' or '>' in the marshaled output can only be a tag delimiter. That
+	// means we don't need to whitelist which characters are allowed inside a tag
+	// (which previously broke on passwords or other attribute values containing
+	// characters like '@' or '#') - it's enough to match anything that isn't '<' or '>'.
+	re := regexp.MustCompile(`<([^/>][^<>]*)>\s*<(/\w*)>`)
 	newData := re.ReplaceAllString(string(data), "<$1/>")
 	return []byte(newData), nil
 }
