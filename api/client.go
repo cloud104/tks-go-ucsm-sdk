@@ -121,7 +121,7 @@ func (c *Client) doPost(in, out any) (err error) {
 		return fmt.Errorf("xmlMarshalWithSelfClosingTags: %v", err)
 	}
 	if c.config.Debug {
-		slog.Debug("Request:\n%s\n\n", slog.String("data", string(data)))
+		slog.Debug("ucsm request", "data", string(data))
 	}
 	r, err := http.NewRequest("POST", c.apiURL.String(), bytes.NewBuffer(data))
 	if err != nil {
@@ -140,7 +140,7 @@ func (c *Client) doPost(in, out any) (err error) {
 		return fmt.Errorf("failed to read response body: %w", err)
 	}
 	if c.config.Debug {
-		slog.Debug("Response:\n%s\n\n", slog.String("body", string(body)))
+		slog.Debug("ucsm response", "body", string(body))
 	}
 
 	if err := xml.Unmarshal(body, &baseResponse); err == nil && baseResponse.IsError() {

@@ -8,7 +8,7 @@ import (
 	"github.com/cloud104/tks-go-ucsm-sdk/api"
 )
 
-func AaaLogin(endPoint string, username string, password string) (client *api.Client, err error) {
+func AaaLogin(endPoint string, username string, password string, debug bool) (client *api.Client, err error) {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
@@ -18,7 +18,7 @@ func AaaLogin(endPoint string, username string, password string) (client *api.Cl
 		Username:   username,
 		Password:   password,
 		HTTPClient: httpClient,
-		Debug:      false,
+		Debug:      debug,
 	}
 
 	client, err = api.NewClient(config)
