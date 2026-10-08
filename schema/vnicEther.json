@@ -1,0 +1,512 @@
+{
+  "children": [
+    "fabricEthMonSrcEp",
+    "fabricFcMonSrcEp",
+    "fabricNetGroupRef",
+    "fabricNetflowMonSrcEp",
+    "faultInst",
+    "vnicDynamicConPolicyRef",
+    "vnicEtherIf",
+    "vnicFcOEIf",
+    "vnicLifVlan",
+    "vnicMacHistory",
+    "vnicSriovHpnConPolicyRef",
+    "vnicUsnicConPolicyRef",
+    "vnicVmqConPolicyRef"
+  ],
+  "class": "vnicEther",
+  "parents": [
+    "lsServer",
+    "vnicLanConnPolicy"
+  ],
+  "props": [
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "adaptorProfileName"
+    },
+    {
+      "access": "rw",
+      "pattern": "(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0",
+      "type": "string",
+      "values": [
+        "derived"
+      ],
+      "version": "1.0(1e)",
+      "xml": "addr"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "2.2(4b)",
+      "xml": "adminCdnName"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "1",
+        "2",
+        "ANY",
+        "NONE"
+      ],
+      "version": "2.2(3a)",
+      "xml": "adminHostPort"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "any"
+      ],
+      "version": "1.1(1j)",
+      "xml": "adminVcon"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "disabled",
+        "enabled"
+      ],
+      "version": "1.0(1e)",
+      "xml": "bootDev"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "false",
+        "no",
+        "true",
+        "yes"
+      ],
+      "version": "2.2(7b)",
+      "xml": "cdnPropInSync"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "user-defined",
+        "vnic-name"
+      ],
+      "version": "2.2(7b)",
+      "xml": "cdnSource"
+    },
+    {
+      "access": "internal",
+      "pattern": "((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "childAction"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|not-applicable|unsupported-azurestackqos-geneve|adaptor-protected-eth-capability|vif-resources-overprovisioned|ungrouped-domain|unsupported-nvgre|unsupported-adaptor-for-vnic-cdn|misconfigured-net-san-group|unresolved-remote-vlan-name|invalid-wwn|service-profile-virtualization-conflict|unsupported-roce-netflow|unsupported-vxlan-netflow|redundancy-vnicpair-not-in-sync|fcoe-capacity|wwpn-derivation-virtualized-port|unresolved-vlan-name|vnic-virtualization-netflow-conflict|unsupported-vxlan-usnic|unsupported-roce-properties|pinning-vlan-mismatch|adaptor-requirement|vnic-not-ha-ready|missing-ipv4-inband-mgmt-addr|unsupported-nvgre-dynamic-vnic|duplicate-vnic-cdn-name|overlapping-vlans|unresolved-remote-vsan-name|mac-derivation-virtualized-port|vnic-virtualization-conflict|unsupported-roce|unsupported-nvgre-netflow|unsupported-adaptor-for-vnic-oracle-rac|vnic-vlan-assignment-error|insufficient-vhba-capacity|inaccessible-vlan|unsupported-geneve-vmq-vmmq-arfs-roce-advfilters|soft-pinning-vlan-mismatch|unsupported-roce-sriov-vxlan|unsupported-nvgre-vmq|connection-placement|vnic-vcon-provisioning-change|missing-ipv6-inband-mgmt-addr|unsupported-nvgre-usnic|insufficient-roce-resources|unsupported-azurestackqos-vmmq-geneve-advfilters|missing-primary-vlan|adaptor-fcoe-capability|vfc-vnic-pvlan-conflict|virtualization-not-supported|unsupported-vxlan|unsupported-roce-nvgre|unresolved-net-san-group|unresolved-vsan-name|insufficient-vnic-capacity|unassociated-vlan|unsupported-roce-vmq|unsupported-nvgre-vxlan-vmq|redundancy-vnic-not-in-pair|dynamic-vf-vnic|wwpn-assignment|missing-ipv4-addr|unsupported-vxlan-dynamic-vnic|pinned-target-misconfig|unsupported-vmq-resources),){0,65}(defaultValue|not-applicable|unsupported-azurestackqos-geneve|adaptor-protected-eth-capability|vif-resources-overprovisioned|ungrouped-domain|unsupported-nvgre|unsupported-adaptor-for-vnic-cdn|misconfigured-net-san-group|unresolved-remote-vlan-name|invalid-wwn|service-profile-virtualization-conflict|unsupported-roce-netflow|unsupported-vxlan-netflow|redundancy-vnicpair-not-in-sync|fcoe-capacity|wwpn-derivation-virtualized-port|unresolved-vlan-name|vnic-virtualization-netflow-conflict|unsupported-vxlan-usnic|unsupported-roce-properties|pinning-vlan-mismatch|adaptor-requirement|vnic-not-ha-ready|missing-ipv4-inband-mgmt-addr|unsupported-nvgre-dynamic-vnic|duplicate-vnic-cdn-name|overlapping-vlans|unresolved-remote-vsan-name|mac-derivation-virtualized-port|vnic-virtualization-conflict|unsupported-roce|unsupported-nvgre-netflow|unsupported-adaptor-for-vnic-oracle-rac|vnic-vlan-assignment-error|insufficient-vhba-capacity|inaccessible-vlan|unsupported-geneve-vmq-vmmq-arfs-roce-advfilters|soft-pinning-vlan-mismatch|unsupported-roce-sriov-vxlan|unsupported-nvgre-vmq|connection-placement|vnic-vcon-provisioning-change|missing-ipv6-inband-mgmt-addr|unsupported-nvgre-usnic|insufficient-roce-resources|unsupported-azurestackqos-vmmq-geneve-advfilters|missing-primary-vlan|adaptor-fcoe-capability|vfc-vnic-pvlan-conflict|virtualization-not-supported|unsupported-vxlan|unsupported-roce-nvgre|unresolved-net-san-group|unresolved-vsan-name|insufficient-vnic-capacity|unassociated-vlan|unsupported-roce-vmq|unsupported-nvgre-vxlan-vmq|redundancy-vnic-not-in-pair|dynamic-vf-vnic|wwpn-assignment|missing-ipv4-addr|unsupported-vxlan-dynamic-vnic|pinned-target-misconfig|unsupported-vmq-resources){0,1}",
+      "type": "string",
+      "version": "2.0(1m)",
+      "xml": "configQualifier"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "applied",
+        "applying",
+        "failed-to-apply",
+        "not-applied"
+      ],
+      "version": "1.0(1e)",
+      "xml": "configState"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "dn"
+    },
+    {
+      "access": "ro",
+      "ranges": [
+        "0-65535"
+      ],
+      "type": "ushort",
+      "version": "2.1(1a)",
+      "xml": "dynamicId"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "equipmentDn"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "disabled",
+        "enabled"
+      ],
+      "version": "4.3(5a)",
+      "xml": "etherChannelPinning"
+    },
+    {
+      "access": "internal",
+      "type": "ulong",
+      "version": "1.0(1e)",
+      "xml": "fltAggr"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "identPoolName"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "default",
+        "dynamic",
+        "dynamic-vf",
+        "manual"
+      ],
+      "version": "1.0(1e)",
+      "xml": "instType"
+    },
+    {
+      "access": "rw",
+      "ranges": [
+        "1500-9158"
+      ],
+      "type": "uint",
+      "version": "1.1(1j)",
+      "xml": "mtu"
+    },
+    {
+      "access": "naming",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{1,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "name"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(2d)",
+      "xml": "nwCtrlPolicyName"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "nwTemplName"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operAdaptorProfileName"
+    },
+    {
+      "access": "ro",
+      "max_length": 510,
+      "min_length": 0,
+      "type": "string",
+      "version": "2.2(4b)",
+      "xml": "operCdnName"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "1",
+        "2",
+        "ANY",
+        "NONE"
+      ],
+      "version": "2.2(3a)",
+      "xml": "operHostPort"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operIdentPoolName"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operNwCtrlPolicyName"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operNwTemplName"
+    },
+    {
+      "access": "ro",
+      "ranges": [
+        "0-65535"
+      ],
+      "type": "string",
+      "values": [
+        "unspecified"
+      ],
+      "version": "1.1(1j)",
+      "xml": "operOrder"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "2.0(1m)",
+      "xml": "operPinToGroupName"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operQosPolicyName"
+    },
+    {
+      "access": "ro",
+      "ranges": [
+        "8-100000000"
+      ],
+      "type": "string",
+      "values": [
+        "line-rate"
+      ],
+      "version": "1.1(1j)",
+      "xml": "operSpeed"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.3(1c)",
+      "xml": "operStatsPolicyName"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "any"
+      ],
+      "version": "1.1(1j)",
+      "xml": "operVcon"
+    },
+    {
+      "access": "rw",
+      "ranges": [
+        "0-256"
+      ],
+      "type": "string",
+      "values": [
+        "unspecified"
+      ],
+      "version": "1.0(1e)",
+      "xml": "order"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "conn_policy",
+        "initiator_policy",
+        "logical",
+        "physical",
+        "policy",
+        "unknown"
+      ],
+      "version": "1.0(1e)",
+      "xml": "owner"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "2.1(1a)",
+      "xml": "pfDn"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "pinToGroupName"
+    },
+    {
+      "access": "ro",
+      "type": "ulong",
+      "version": "3.0(2c)",
+      "xml": "propAcl"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "crosslink",
+        "general",
+        "management",
+        "overlay",
+        "unused",
+        "utility"
+      ],
+      "version": "3.0(2c)",
+      "xml": "purpose"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "disabled",
+        "enabled"
+      ],
+      "version": "4.3(2b)",
+      "xml": "qInQ"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "qosPolicyName"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "none",
+        "primary",
+        "secondary"
+      ],
+      "version": "2.2(7b)",
+      "xml": "redundancyPairType"
+    },
+    {
+      "access": "ro",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "2.2(7b)",
+      "xml": "redundancyPeer"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "rn"
+    },
+    {
+      "access": "ro",
+      "pattern": "((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}",
+      "type": "string",
+      "version": "3.0(2c)",
+      "xml": "sacl"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "disabled",
+        "enabled"
+      ],
+      "version": "4.3(2b)",
+      "xml": "sriovHpnPreference"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "statsPolicyName"
+    },
+    {
+      "access": "rw",
+      "pattern": "((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "status"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "A",
+        "A-B",
+        "B",
+        "B-A",
+        "NONE"
+      ],
+      "version": "1.0(1e)",
+      "xml": "switchId"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "ether",
+        "fc",
+        "ipc",
+        "scsi",
+        "unknown"
+      ],
+      "version": "1.0(1e)",
+      "xml": "type"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "NONE",
+        "SRIOV",
+        "SRIOV-HPN",
+        "SRIOV-USNIC",
+        "SRIOV-VMFEX",
+        "VMMQ",
+        "VMQ"
+      ],
+      "version": "2.1(1a)",
+      "xml": "virtualizationPreference"
+    }
+  ],
+  "rn": "ether-[name]",
+  "sdk_version": "0.9.27",
+  "version": "1.0(1e)"
+}

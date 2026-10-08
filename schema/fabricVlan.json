@@ -1,0 +1,353 @@
+{
+  "children": [
+    "fabricEthMonFiltEp",
+    "fabricEthMonSrcEp",
+    "fabricEthVlanPc",
+    "fabricEthVlanPortEp",
+    "fabricPoolableVlan",
+    "fabricSwSubGroup",
+    "faultInst"
+  ],
+  "class": "fabricVlan",
+  "parents": [
+    "fabricEthEstc",
+    "fabricEthEstcCloud",
+    "fabricEthLan",
+    "fabricLanCloud"
+  ],
+  "props": [
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "does-not-exists",
+        "is-empty",
+        "is-in-error-state",
+        "is-not-primary-type",
+        "ok"
+      ],
+      "version": "2.2(2c)",
+      "xml": "assocPrimaryVlanState"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "A",
+        "B",
+        "NONE"
+      ],
+      "version": "2.2(2c)",
+      "xml": "assocPrimaryVlanSwitchId"
+    },
+    {
+      "access": "internal",
+      "pattern": "((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "childAction"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan),){0,7}(defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan){0,1}",
+      "type": "string",
+      "version": "2.1(1a)",
+      "xml": "cloud"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "excluded",
+        "included"
+      ],
+      "version": "2.1(1a)",
+      "xml": "compressionType"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy),){0,3}(defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy){0,1}",
+      "type": "string",
+      "version": "2.1(1a)",
+      "xml": "configIssues"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "error-reserved-conflict",
+        "ok"
+      ],
+      "version": "4.0(1a)",
+      "xml": "configOverlap"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "false",
+        "no",
+        "true",
+        "yes"
+      ],
+      "version": "1.0(1e)",
+      "xml": "defaultNet"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "dn"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "epDn"
+    },
+    {
+      "access": "internal",
+      "type": "ulong",
+      "version": "2.1(1a)",
+      "xml": "fltAggr"
+    },
+    {
+      "access": "ro",
+      "type": "ulong",
+      "version": "2.1(2a)",
+      "xml": "global"
+    },
+    {
+      "access": "rw",
+      "ranges": [
+        "1-4042",
+        "4048-4093"
+      ],
+      "type": "uint",
+      "version": "1.0(1e)",
+      "xml": "id"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "diag",
+        "fcoe-nas-storage",
+        "fcoe-storage",
+        "fcoe-uplink",
+        "mgmt",
+        "monitor",
+        "nas-storage",
+        "network",
+        "network-fcoe-uplink",
+        "server",
+        "service",
+        "storage",
+        "unknown"
+      ],
+      "version": "1.0(1e)",
+      "xml": "ifRole"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "aggregation",
+        "physical",
+        "unknown",
+        "virtual"
+      ],
+      "version": "1.0(1e)",
+      "xml": "ifType"
+    },
+    {
+      "access": "ro",
+      "type": "ulong",
+      "version": "2.1(2a)",
+      "xml": "local"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "locale"
+    },
+    {
+      "access": "rw",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{0,16}",
+      "type": "string",
+      "version": "2.1(1a)",
+      "xml": "mcastPolicyName"
+    },
+    {
+      "access": "naming",
+      "pattern": "[\\-\\.:_a-zA-Z0-9]{1,32}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "name"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "2.1(1a)",
+      "xml": "operMcastPolicyName"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "error-misconfigured",
+        "ok"
+      ],
+      "version": "2.0(1m)",
+      "xml": "operState"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "active",
+        "not-active",
+        "ok",
+        "primary-id-mismatch",
+        "sharing-type-mismatch"
+      ],
+      "version": "2.2(2c)",
+      "xml": "overlapStateForA"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "active",
+        "not-active",
+        "ok",
+        "primary-id-mismatch",
+        "sharing-type-mismatch"
+      ],
+      "version": "2.2(2c)",
+      "xml": "overlapStateForB"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "peerDn"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "local",
+        "pending-policy",
+        "policy"
+      ],
+      "version": "2.1(2a)",
+      "xml": "policyOwner"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "admin-state-changed",
+        "none"
+      ],
+      "version": "6.0(2a)",
+      "xml": "portInternalState"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.4(1i)",
+      "xml": "pubNwDn"
+    },
+    {
+      "access": "ro",
+      "type": "uint",
+      "version": "1.4(1i)",
+      "xml": "pubNwId"
+    },
+    {
+      "access": "rw",
+      "max_length": 510,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.4(1i)",
+      "xml": "pubNwName"
+    },
+    {
+      "access": "ro",
+      "max_length": 256,
+      "min_length": 0,
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "rn"
+    },
+    {
+      "access": "ro",
+      "pattern": "((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}",
+      "type": "string",
+      "version": "3.0(2c)",
+      "xml": "sacl"
+    },
+    {
+      "access": "rw",
+      "type": "string",
+      "values": [
+        "community",
+        "isolated",
+        "none",
+        "primary"
+      ],
+      "version": "1.4(1i)",
+      "xml": "sharing"
+    },
+    {
+      "access": "rw",
+      "pattern": "((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "status"
+    },
+    {
+      "access": "ro",
+      "type": "string",
+      "values": [
+        "A",
+        "B",
+        "NONE",
+        "dual"
+      ],
+      "version": "1.0(1e)",
+      "xml": "switchId"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "transport"
+    },
+    {
+      "access": "ro",
+      "pattern": "((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}",
+      "type": "string",
+      "version": "1.0(1e)",
+      "xml": "type"
+    }
+  ],
+  "rn": "net-[name]",
+  "sdk_version": "0.9.27",
+  "version": "1.0(1e)"
+}

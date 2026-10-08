@@ -32,3 +32,4 @@ go.work.sum
 .vscode/
 main.go
 bin/
+tools/mogen/extract/.venv
