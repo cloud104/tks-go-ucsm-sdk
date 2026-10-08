@@ -1,0 +1,9 @@
+version: "1.0.7"     # a versão atual da lib, sem o "v"
+git-commit: true
+git-tag: true
+git-sign: false      # true se vocês assinam commits com GPG
+
+files:
+  - path: "version/version.go"
+    replace:
+      - 'const Version = "v{version}"'

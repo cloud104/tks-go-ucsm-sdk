@@ -2,4 +2,4 @@
 package version
 
 // Version is the version of the Cisco UCS API library.
-const Version = "1.0.0"
+const Version = "v1.0.7"
